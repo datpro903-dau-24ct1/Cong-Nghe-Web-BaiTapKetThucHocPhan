@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block title %}Đặt hàng{% endblock %}
+{% block main_class %}wide{% endblock %}
+{% block content %}
+  <h1 class="section-title">Đặt hàng</h1>
+
+  <div class="checkout-grid">
+    <form method="post" class="checkout-form" onsubmit="var b=this.querySelector('button[type=submit]');if(b){b.disabled=true;}">
+      {% csrf_token %}
+      {{ form.checkout_token }}
+      {% if form.non_field_errors %}
+        <ul class="errorlist">{% for err in form.non_field_errors %}<li>{{ err }}</li>{% endfor %}</ul>
+      {% endif %}
+
+      {% if addresses %}
+        <div class="field">
+          <label for="{{ form.address_id.id_for_label }}">{{ form.address_id.label }}</label>
+          {{ form.address_id }}
+          {{ form.address_id.errors }}
+          <p class="helptext">Chọn địa chỉ có sẵn hoặc chọn dòng đầu tiên để nhập địa chỉ mới bên dưới.</p>
+        </div>
+      {% endif %}
+
+      <fieldset class="checkout-manual">
+        <legend>Địa chỉ nhận hàng (nếu nhập mới)</legend>
+        <div class="field">
+          <label for="{{ form.receiver.id_for_label }}">{{ form.receiver.label }}</label>
+          {{ form.receiver }}
+          {{ form.receiver.errors }}
+        </div>
+        <div class="field">
+          <label for="{{ form.phone.id_for_label }}">{{ form.phone.label }}</label>
+          {{ form.phone }}
+          {{ form.phone.errors }}
+        </div>
+        <div class="field">
+          <label for="{{ form.street.id_for_label }}">{{ form.street.label }}</label>
+          {{ form.street }}
+          {{ form.street.errors }}
+        </div>
+        <div class="field">
+          <label for="{{ form.ward.id_for_label }}">{{ form.ward.label }}</label>
+          {{ form.ward }}
+          {{ form.ward.errors }}
+        </div>
+        <div class="field">
+          <label for="{{ form.province.id_for_label }}">{{ form.province.label }}</label>
+          {{ form.province }}
+          {{ form.province.errors }}
+        </div>
+      </fieldset>
+
+      <div class="field">
+        <label for="{{ form.payment_method.id_for_label }}">{{ form.payment_method.label }}</label>
+        {{ form.payment_method }}
+        {{ form.payment_method.errors }}
+      </div>
+
+      <div class="field">
+        <label for="{{ form.coupon_code.id_for_label }}">{{ form.coupon_code.label }}</label>
+        {{ form.coupon_code }}
+        {{ form.coupon_code.errors }}
+      </div>
+
+      <div class="field">
+        <label for="{{ form.note.id_for_label }}">{{ form.note.label }}</label>
+        {{ form.note }}
+        {{ form.note.errors }}
+      </div>
+
+      <div class="checkout-actions">
+        <a href="{% url 'carts:cart' %}" class="btn btn-ghost">← Quay lại giỏ hàng</a>
+        <button type="submit" class="btn">Xác nhận đặt hàng</button>
+      </div>
+    </form>
+
+    <aside class="checkout-summary">
+      <h2>Tóm tắt đơn hàng</h2>
+      <ul class="checkout-items">
+        {% for line in lines %}
+          <li>
+            <span>{{ line.product.name }} <strong>× {{ line.quantity }}</strong></span>
+            <span>{{ line.line_total|floatformat:"0g" }} ₫</span>
+          </li>
+        {% endfor %}
+        <li>
+          <span>Tạm tính</span>
+          <span>{{ subtotal|floatformat:"0g" }} ₫</span>
+        </li>
+        {% if discount_amount > 0 %}
+          <li>
+            <span>Giảm giá</span>
+            <span>-{{ discount_amount|floatformat:"0g" }} ₫</span>
+          </li>
+        {% endif %}
+        <li>
+          <span>Phí vận chuyển (COD)</span>
+          <span>{{ shipping_fee|floatformat:"0g" }} ₫</span>
+        </li>
+      </ul>
+      <p class="helptext">Nội thành TP.HCM &amp; Hà Nội: 30.000 ₫ — Tỉnh/thành khác: 40.000 ₫.</p>
+      <div class="cart-summary">
+        <span>Tổng thanh toán</span>
+        <strong>{{ total|floatformat:"0g" }} ₫</strong>
+      </div>
+    </aside>
+  </div>
+{% endblock %}

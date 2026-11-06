@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Giỏ hàng{% endblock %}
+{% block main_class %}wide{% endblock %}
+{% block content %}
+  <h1 class="section-title">Giỏ hàng</h1>
+
+  {% if lines %}
+    <div class="cart">
+      <ul class="cart-lines">
+        {% for line in lines %}
+          <li class="cart-line{% if not line.available %} unavailable{% endif %}">
+            <img class="cart-thumb"
+                 src="{% if line.image %}{{ line.image.image.url }}{% else %}{% static 'img/no-image.svg' %}{% endif %}"
+                 alt="{{ line.product.name }}"
+                 data-fallback="{% static 'img/no-image.svg' %}"
+                 onerror="this.onerror=null;this.src=this.dataset.fallback;">
+            <div class="cart-info">
+              {% if line.product.is_active %}
+                <a class="cart-name" href="{% url 'product_detail' line.product.slug %}">{{ line.product.name }}</a>
+              {% else %}
+                <span class="cart-name">{{ line.product.name }}</span>
+              {% endif %}
+              <p class="cart-price">{{ line.unit_price|floatformat:"0g" }} ₫</p>
+              {% if line.price_changed %}
+                <p class="cart-problem">Giá đã thay đổi: <s>{{ line.old_price|floatformat:"0g" }} ₫</s> → {{ line.unit_price|floatformat:"0g" }} ₫</p>
+              {% endif %}
+              {% if line.problem %}<p class="cart-problem">{{ line.problem }}</p>{% endif %}
+            </div>
+            <div class="cart-actions">
+              {% if line.product.is_active and line.product.stock > 0 %}
+                <form method="post" action="{% url 'carts:update' line.product.pk %}" class="cart-qty">
+                  {% csrf_token %}
+                  <input type="number" name="quantity" value="{{ line.quantity }}" min="1" max="{{ line.product.stock }}" required aria-label="Số lượng">
+                  <button type="submit" class="btn btn-ghost">Cập nhật</button>
+                </form>
+              {% else %}
+                <span class="cart-qty-fixed">x {{ line.quantity }}</span>
+              {% endif %}
+              <p class="cart-total">{{ line.line_total|floatformat:"0g" }} ₫</p>
+              <form method="post" action="{% url 'carts:remove' line.product.pk %}">
+                {% csrf_token %}
+                <button type="submit" class="linklike">Xóa</button>
+              </form>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+
+      <div class="cart-summary">
+        <span>Tổng cộng</span>
+        <strong>{{ total|floatformat:"0g" }} ₫</strong>
+      </div>
+      <div class="cart-footer-actions">
+        <a href="{% url 'home' %}">← Tiếp tục mua sắm</a>
+        {% if total > 0 %}
+          <a class="btn" href="{% url 'orders:checkout' %}">Tiến hành đặt hàng</a>
+        {% endif %}
+      </div>
+    </div>
+  {% else %}
+    <p class="empty">Giỏ hàng của bạn đang trống. <a href="{% url 'home' %}">Tiếp tục mua sắm</a></p>
+  {% endif %}
+{% endblock %}

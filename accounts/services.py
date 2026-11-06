@@ -2,12 +2,18 @@
 import math
 from datetime import timedelta
 
+from django.conf import settings
 from django.contrib.auth import authenticate
 from django.contrib.auth.password_validation import validate_password
+from django.contrib.auth.tokens import default_token_generator
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from django.db import IntegrityError, transaction
 from django.utils import timezone
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode
+
+from . import selectors
 from .models import Address, User, clean_email
 from .validators import normalize_phone, validate_vn_phone
 
@@ -180,3 +186,110 @@ def delete_address(address):
             if replacement is not None:
                 replacement.is_default = True
                 replacement.save(update_fields=["is_default"])
+
+
+# ---------------------------------------------------------------- CN19: quên mật khẩu / đổi mật khẩu
+
+
+def request_password_reset(
+    email,
+    *,
+    reset_url_builder,
+    send_mail_fn,
+    token_generator=default_token_generator,
+) -> bool:
+    """Tạo token đặt lại mật khẩu và gửi email qua hàm truyền vào (CN19).
+
+    Nếu email không tồn tại hoặc tài khoản bị vô hiệu hóa thì trả về False
+    mà không báo lỗi để không tiết lộ thông tin tài khoản.
+    """
+    user = selectors.get_active_user_by_email(email)
+    if user is None:
+        return False
+
+    uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
+    token = token_generator.make_token(user)
+    reset_url = reset_url_builder(uidb64, token)
+
+    subject = "Đặt lại mật khẩu - Anime Figure Shop"
+    message = (
+        f"Xin chào {user.full_name},\n\n"
+        f"Bạn (hoặc ai đó) vừa yêu cầu đặt lại mật khẩu cho tài khoản {user.email}.\n"
+        f"Vui lòng mở liên kết dưới đây để đặt mật khẩu mới:\n{reset_url}\n\n"
+        "Nếu bạn không yêu cầu, vui lòng bỏ qua email này."
+    )
+    send_mail_fn(
+        subject,
+        message,
+        settings.DEFAULT_FROM_EMAIL,
+        [user.email],
+    )
+    return True
+
+
+def verify_password_reset_token(
+    uidb64, token, *, token_generator=default_token_generator
+):
+    """Kiểm tra uidb64 + token đặt lại mật khẩu; không hợp lệ/hết hạn -> ValidationError."""
+    user = selectors.get_active_user_by_uidb64(uidb64)
+    if user is None or not token or not token_generator.check_token(user, token):
+        raise ValidationError(
+            "Liên kết đặt lại mật khẩu không hợp lệ hoặc đã hết hạn.",
+            code="invalid_token",
+        )
+    return user
+
+
+def reset_password_with_token(
+    uidb64,
+    token,
+    *,
+    new_password,
+    token_generator=default_token_generator,
+):
+    """Đặt lại mật khẩu bằng token; sau khi đổi mật khẩu token cũ tự mất hiệu lực."""
+    user = verify_password_reset_token(
+        uidb64, token, token_generator=token_generator
+    )
+    try:
+        validate_password(new_password or "", user=user)
+    except ValidationError as exc:
+        raise ValidationError({"new_password": exc})
+
+    with transaction.atomic():
+        locked = User.objects.select_for_update().get(pk=user.pk)
+        if not token_generator.check_token(locked, token):
+            raise ValidationError(
+                "Liên kết đặt lại mật khẩu không hợp lệ hoặc đã hết hạn.",
+                code="invalid_token",
+            )
+        locked.set_password(new_password)
+        locked.failed_login_count = 0
+        locked.locked_until = None
+        locked.save(update_fields=["password", "failed_login_count", "locked_until"])
+        return locked
+
+
+def change_password(user, *, old_password, new_password):
+    """Đổi mật khẩu cho người dùng đang đăng nhập."""
+    if user is None or not getattr(user, "is_authenticated", False):
+        raise ValidationError("Vui lòng đăng nhập.", code="unauthenticated")
+
+    errors = {}
+    if not user.check_password(old_password or ""):
+        errors["old_password"] = ValidationError(
+            "Mật khẩu hiện tại không đúng.", code="invalid_old_password"
+        )
+
+    try:
+        validate_password(new_password or "", user=user)
+    except ValidationError as exc:
+        errors["new_password"] = exc
+
+    if errors:
+        raise ValidationError(errors)
+
+    with transaction.atomic():
+        user.set_password(new_password)
+        user.save(update_fields=["password"])
+    return user

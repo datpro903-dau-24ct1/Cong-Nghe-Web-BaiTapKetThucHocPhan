@@ -14,4 +14,11 @@ urlpatterns = [
     path("addresses/<int:pk>/edit/", views.address_edit_view, name="address_edit"),
     path("addresses/<int:pk>/delete/", views.address_delete_view, name="address_delete"),
     path("addresses/<int:pk>/default/", views.address_set_default_view, name="address_set_default"),
+    path("password-reset/", views.password_reset_request_view, name="password_reset"),
+    path(
+        "password-reset/<str:uidb64>/<str:token>/",
+        views.password_reset_confirm_view,
+        name="password_reset_confirm",
+    ),
+    path("password-change/", views.password_change_view, name="password_change"),
 ]

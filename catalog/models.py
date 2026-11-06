@@ -1,4 +1,5 @@
-from django.core.validators import MinValueValidator
+from django.conf import settings
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 
@@ -57,6 +58,10 @@ class Product(models.Model):
     stock = models.PositiveIntegerField("Tồn kho", default=0)
     description = models.TextField("Mô tả", blank=True)
     is_active = models.BooleanField("Đang bán", default=True)
+    rating_avg = models.DecimalField(
+        "Điểm trung bình", max_digits=3, decimal_places=2, default=0
+    )
+    review_count = models.PositiveIntegerField("Số đánh giá", default=0)
     created_at = models.DateTimeField("Ngày tạo", auto_now_add=True)
     updated_at = models.DateTimeField("Ngày cập nhật", auto_now=True)
 
@@ -84,5 +89,52 @@ class ProductImage(models.Model):
         verbose_name = "Ảnh sản phẩm"
         verbose_name_plural = "Ảnh sản phẩm"
 
+    def clean(self):
+        super().clean()
+        if self.image:
+            from .services import validate_product_image
+
+            validate_product_image(self.image)
+
     def __str__(self):
         return f"{self.product.name} #{self.pk}"
+
+
+class Review(models.Model):
+    product = models.ForeignKey(
+        Product,
+        verbose_name="Sản phẩm",
+        on_delete=models.CASCADE,
+        related_name="reviews",
+    )
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        verbose_name="Người dùng",
+        on_delete=models.CASCADE,
+        related_name="reviews",
+    )
+    rating = models.PositiveSmallIntegerField(
+        "Số sao",
+        validators=[MinValueValidator(1), MaxValueValidator(5)],
+    )
+    comment = models.TextField("Nhận xét", max_length=2000, blank=True)
+    created_at = models.DateTimeField("Ngày đánh giá", auto_now_add=True)
+    updated_at = models.DateTimeField("Ngày cập nhật", auto_now=True)
+
+    class Meta:
+        ordering = ["-created_at", "-id"]
+        verbose_name = "Đánh giá sản phẩm"
+        verbose_name_plural = "Đánh giá sản phẩm"
+        constraints = [
+            models.UniqueConstraint(
+                fields=["product", "user"],
+                name="unique_product_user_review",
+            ),
+            models.CheckConstraint(
+                condition=models.Q(rating__gte=1, rating__lte=5),
+                name="review_rating_between_1_and_5",
+            ),
+        ]
+
+    def __str__(self):
+        return f"{self.user} - {self.product} ({self.rating}/5)"

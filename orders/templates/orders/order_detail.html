@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Chi tiết đơn hàng #{{ order.pk }}{% endblock %}
+{% block main_class %}wide{% endblock %}
+{% block content %}
+  <nav class="breadcrumb" aria-label="Đường dẫn">
+    <a href="{% url 'orders:list' %}">Đơn hàng của tôi</a> →
+    <span>Đơn #{{ order.pk }}</span>
+  </nav>
+
+  <h1 class="section-title">Chi tiết đơn hàng #{{ order.pk }}</h1>
+
+  <div class="addr">
+    <p><strong>Trạng thái:</strong> <span class="badge order-status-{{ order.status }}">{{ order.get_status_display }}</span></p>
+    <p><strong>Ngày đặt:</strong> {{ order.created_at|date:"d/m/Y H:i" }}</p>
+    <p><strong>Người nhận:</strong> {{ order.receiver }} ({{ order.phone }})</p>
+    <p><strong>Địa chỉ giao hàng:</strong> {{ order.street }}, {{ order.ward }}, {{ order.province }}</p>
+    <p><strong>Phương thức thanh toán:</strong> {{ order.get_payment_method_display }}</p>
+    {% if order.coupon_code %}<p><strong>Mã giảm giá:</strong> {{ order.coupon_code }} (-{{ order.discount_amount|floatformat:"0g" }} ₫)</p>{% endif %}
+    {% if order.note %}<p><strong>Ghi chú:</strong> {{ order.note }}</p>{% endif %}
+  </div>
+
+  <table class="specs">
+    <thead>
+      <tr>
+        <th>Sản phẩm</th>
+        <th>Đơn giá</th>
+        <th>Số lượng</th>
+        <th>Thành tiền</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in order.items.all %}
+        <tr>
+          <td>
+            {% if item.product and item.product.is_active %}
+              <a href="{% url 'product_detail' item.product.slug %}">{{ item.product_name }}</a>
+            {% else %}
+              {{ item.product_name }}
+            {% endif %}
+          </td>
+          <td>{{ item.unit_price|floatformat:"0g" }} ₫</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.line_total|floatformat:"0g" }} ₫</td>
+        </tr>
+      {% endfor %}
+      <tr>
+        <th colspan="3">Tạm tính</th>
+        <td>{{ order.subtotal|floatformat:"0g" }} ₫</td>
+      </tr>
+      {% if order.discount_amount > 0 %}
+        <tr>
+          <th colspan="3">Giảm giá ({{ order.coupon_code }})</th>
+          <td>-{{ order.discount_amount|floatformat:"0g" }} ₫</td>
+        </tr>
+      {% endif %}
+      <tr>
+        <th colspan="3">Phí vận chuyển</th>
+        <td>{{ order.shipping_fee|floatformat:"0g" }} ₫</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="cart-summary">
+    <span>Tổng cộng</span>
+    <strong>{{ order.total|floatformat:"0g" }} ₫</strong>
+  </div>
+
+  <div class="cart-footer-actions">
+    <a class="btn btn-ghost" href="{% url 'orders:list' %}">← Danh sách đơn hàng</a>
+    {% if can_cancel %}
+      <form method="post" action="{% url 'orders:cancel' order.pk %}">
+        {% csrf_token %}
+        <button type="submit" class="btn">Hủy đơn hàng</button>
+      </form>
+    {% endif %}
+  </div>
+{% endblock %}

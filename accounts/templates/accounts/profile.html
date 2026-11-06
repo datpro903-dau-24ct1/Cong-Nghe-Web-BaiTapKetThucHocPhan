@@ -8,5 +8,7 @@
     {{ form.as_p }}
     <button type="submit" class="btn">Lưu thay đổi</button>
   </form>
+  <p><a href="{% url 'accounts:password_change' %}">Đổi mật khẩu</a></p>
   <p><a href="{% url 'accounts:address_list' %}">Quản lý sổ địa chỉ giao hàng</a></p>
+  <p><a href="{% url 'orders:list' %}">Xem lịch sử đơn hàng</a></p>
 {% endblock %}

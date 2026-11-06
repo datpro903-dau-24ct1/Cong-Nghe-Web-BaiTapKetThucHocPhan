@@ -2,7 +2,7 @@
 <div class="card">
   <a class="card-link" href="{% url 'product_detail' product.slug %}">
     {% with image=product.images.first %}
-      <img loading="lazy"
+      <img loading="lazy" decoding="async"
            src="{% if image %}{{ image.image.url }}{% else %}{% static 'img/no-image.svg' %}{% endif %}"
            alt="{{ product.name }}"
            data-fallback="{% static 'img/no-image.svg' %}"

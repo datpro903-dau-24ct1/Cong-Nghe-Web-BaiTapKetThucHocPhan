@@ -13,6 +13,7 @@
     <div class="gallery">
       {% if images %}
         <img id="main-image" class="main" src="{{ images.0.image.url }}" alt="{{ product.name }}"
+             decoding="async"
              data-fallback="{% static 'img/no-image.svg' %}"
              onerror="this.onerror=null;this.src=this.dataset.fallback;">
         {% if images|length > 1 %}
@@ -22,22 +23,35 @@
                 <button type="button" data-src="{{ image.image.url }}"
                         onclick="document.getElementById('main-image').src=this.dataset.src"
                         aria-label="Xem ảnh {{ forloop.counter }}">
-                  <img src="{{ image.image.url }}" alt="" loading="lazy"
+                  <img src="{{ image.image.url }}" alt="" loading="lazy" decoding="async"
                        data-fallback="{% static 'img/no-image.svg' %}"
                        onerror="this.onerror=null;this.src=this.dataset.fallback;">
                 </button>
               </li>
             {% endfor %}
           </ul>
+          <noscript>
+            <p class="helptext">Mở trực tiếp từng ảnh khi tắt JavaScript:</p>
+            <p class="noscript-thumbs">
+              {% for image in images %}
+                <a href="{{ image.image.url }}" target="_blank" rel="noopener">Ảnh {{ forloop.counter }}</a>
+              {% endfor %}
+            </p>
+          </noscript>
         {% endif %}
       {% else %}
-        <img class="main" src="{% static 'img/no-image.svg' %}" alt="{{ product.name }}">
+        <img class="main" src="{% static 'img/no-image.svg' %}" alt="{{ product.name }}" decoding="async">
       {% endif %}
     </div>
 
     <div class="detail-info">
       <h1>{{ product.name }}</h1>
-      <p class="meta">{{ product.series.name }} · {{ product.brand.name }}</p>
+      <p class="meta">
+        {{ product.series.name }} · {{ product.brand.name }}
+        {% if product.review_count > 0 %}
+          · <span class="rating-badge" aria-label="Điểm đánh giá trung bình">★ {{ product.rating_avg }} / 5 ({{ product.review_count }} đánh giá)</span>
+        {% endif %}
+      </p>
       <p class="detail-price">{{ product.price|floatformat:"0g" }} ₫</p>
       <p>
         {% if product.stock > 0 %}
@@ -46,6 +60,17 @@
           <span class="stock out">Hết hàng</span>
         {% endif %}
       </p>
+
+      {% if product.stock > 0 %}
+        <form method="post" action="{% url 'carts:add' product.pk %}" class="add-to-cart">
+          {% csrf_token %}
+          <input type="hidden" name="next" value="{{ request.path }}">
+          <label>Số lượng
+            <input type="number" name="quantity" value="1" min="1" max="{{ product.stock }}" required>
+          </label>
+          <button type="submit" class="btn">Thêm vào giỏ</button>
+        </form>
+      {% endif %}
 
       <table class="specs">
         <tr><th>Danh mục</th><td><a href="{% url 'category' product.category.slug %}">{{ product.category.name }}</a></td></tr>
@@ -64,6 +89,51 @@
       {% endif %}
     </div>
   </div>
+
+  <section class="reviews-section" aria-labelledby="reviews-heading">
+    <h2 id="reviews-heading" class="section-title">
+      Đánh giá &amp; bình luận ({{ product.review_count }})
+    </h2>
+
+    {% if can_review %}
+      <form method="post" action="{% url 'submit_review' product.slug %}" class="review-form card">
+        {% csrf_token %}
+        <h3>Viết đánh giá của bạn</h3>
+        <div class="form-row">
+          <label for="{{ review_form.rating.id_for_label }}">{{ review_form.rating.label }}</label>
+          {{ review_form.rating }}
+        </div>
+        <div class="form-row">
+          <label for="{{ review_form.comment.id_for_label }}">{{ review_form.comment.label }}</label>
+          {{ review_form.comment }}
+        </div>
+        <button type="submit" class="btn">Gửi đánh giá</button>
+      </form>
+    {% endif %}
+
+    {% if reviews %}
+      <div class="review-list">
+        {% for review in reviews %}
+          <article class="review-item card">
+            <header class="review-header">
+              <strong>{{ review.user.full_name|default:review.user.email }}</strong>
+              <span class="review-stars" aria-label="{{ review.rating }} trên 5 sao">
+                ★ {{ review.rating }}/5
+              </span>
+              <time class="meta" datetime="{{ review.created_at|date:'c' }}">
+                {{ review.created_at|date:"d/m/Y H:i" }}
+              </time>
+            </header>
+            {% if review.comment %}
+              <p class="review-comment">{{ review.comment|linebreaksbr }}</p>
+            {% endif %}
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="meta">Chưa có đánh giá nào cho sản phẩm này.</p>
+    {% endif %}
+  </section>
 
   {% if related_products %}
     <h2 class="section-title">Sản phẩm liên quan</h2>

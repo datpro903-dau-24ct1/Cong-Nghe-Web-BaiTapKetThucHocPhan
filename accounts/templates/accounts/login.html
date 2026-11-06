@@ -8,5 +8,6 @@
     {{ form.as_p }}
     <button type="submit" class="btn">Đăng nhập</button>
   </form>
+  <p><a href="{% url 'accounts:password_reset' %}">Quên mật khẩu?</a></p>
   <p>Chưa có tài khoản? <a href="{% url 'accounts:register' %}">Đăng ký</a></p>
 {% endblock %}

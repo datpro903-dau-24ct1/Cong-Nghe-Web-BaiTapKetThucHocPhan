@@ -41,3 +41,37 @@ class AddressForm(forms.Form):
 
 class AddressEditForm(AddressForm):
     is_default = None  # đổi địa chỉ mặc định bằng nút riêng trong danh sách
+
+
+class PasswordResetRequestForm(forms.Form):
+    email = forms.EmailField(label="Email đã đăng ký")
+
+
+class PasswordResetConfirmForm(forms.Form):
+    new_password = forms.CharField(
+        label="Mật khẩu mới", widget=forms.PasswordInput, strip=False
+    )
+    new_password_confirm = forms.CharField(
+        label="Nhập lại mật khẩu mới", widget=forms.PasswordInput, strip=False
+    )
+
+    def clean(self):
+        cleaned = super().clean()
+        if cleaned.get("new_password") and cleaned.get("new_password") != cleaned.get(
+            "new_password_confirm"
+        ):
+            raise ValidationError(
+                {
+                    "new_password_confirm": ValidationError(
+                        "Hai mật khẩu không khớp.", code="mismatch"
+                    )
+                }
+            )
+        return cleaned
+
+
+class PasswordChangeCustomForm(PasswordResetConfirmForm):
+    old_password = forms.CharField(
+        label="Mật khẩu hiện tại", widget=forms.PasswordInput, strip=False
+    )
+    field_order = ["old_password", "new_password", "new_password_confirm"]

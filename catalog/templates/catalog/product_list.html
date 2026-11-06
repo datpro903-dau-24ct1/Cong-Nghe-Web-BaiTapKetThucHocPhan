@@ -2,7 +2,7 @@
 {% block title %}{% if category %}{{ category.name }}{% else %}Sản phẩm mới nhất{% endif %}{% endblock %}
 {% block main_class %}wide{% endblock %}
 {% block content %}
-  {% if not category and page_obj.number == 1 %}
+  {% if not category and page_obj.number == 1 and not is_filtered %}
     <section class="hero">
       <h1>Mô hình Anime chính hãng</h1>
       <p>Figure, Nendoroid và nhiều mẫu mô hình được tuyển chọn cho người sưu tầm.</p>
@@ -25,6 +25,44 @@
     {% endfor %}
   </ul>
 
+  <form method="get" action="#san-pham" class="filter-form">
+    <div class="filter-row">
+      <details class="chip{% if filter_form.q.value %} active{% endif %}">
+        <summary><svg class="ico" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><span>Tìm kiếm</span></summary>
+        <div class="chip-panel">{{ filter_form.q }}</div>
+      </details>
+      <details class="chip{% if filter_form.series.value %} active{% endif %}">
+        <summary><svg class="ico" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Bộ anime</span></summary>
+        <div class="chip-panel">{{ filter_form.series }}</div>
+      </details>
+      <details class="chip{% if filter_form.brand.value %} active{% endif %}">
+        <summary><svg class="ico" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.2"/></svg><span>Hãng</span></summary>
+        <div class="chip-panel">{{ filter_form.brand }}</div>
+      </details>
+      <details class="chip{% if filter_form.price_min.value or filter_form.price_max.value %} active{% endif %}">
+        <summary><svg class="ico" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20"/><path d="M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Khoảng giá</span></summary>
+        <div class="chip-panel">{{ filter_form.price_min }}{{ filter_form.price_max }}</div>
+      </details>
+      <details class="chip{% if filter_form.scale.value %} active{% endif %}">
+        <summary><svg class="ico" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5"/><path d="M12 13v8"/></svg><span>Tỉ lệ</span></summary>
+        <div class="chip-panel">{{ filter_form.scale }}</div>
+      </details>
+      <details class="chip{% if filter_form.sort.value and filter_form.sort.value != 'newest' %} active{% endif %}">
+        <summary><svg class="ico" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/></svg><span>Sắp xếp</span></summary>
+        <div class="chip-panel">{{ filter_form.sort }}</div>
+      </details>
+      <button type="submit" class="btn">Lọc</button>
+      {% if request.GET %}<a class="filter-reset" href="{{ reset_url }}">Xóa bộ lọc</a>{% endif %}
+    </div>
+  </form>
+  <script>
+    document.querySelectorAll(".filter-form details.chip").forEach(function (d) {
+      d.addEventListener("toggle", function () {
+        if (d.open) document.querySelectorAll(".filter-form details.chip[open]").forEach(function (o) { if (o !== d) o.open = false; });
+      });
+    });
+  </script>
+
   {% if page_obj.object_list %}
     <div class="grid">
       {% for product in page_obj %}
@@ -34,12 +72,12 @@
 
     {% if page_obj.paginator.num_pages > 1 %}
       <nav class="pagination">
-        {% if page_obj.has_previous %}<a href="?page={{ page_obj.previous_page_number }}#san-pham">‹ Trước</a>{% endif %}
+        {% if page_obj.has_previous %}<a href="?{% if query_string %}{{ query_string }}&amp;{% endif %}page={{ page_obj.previous_page_number }}#san-pham">‹ Trước</a>{% endif %}
         <span>Trang {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
-        {% if page_obj.has_next %}<a href="?page={{ page_obj.next_page_number }}#san-pham">Sau ›</a>{% endif %}
+        {% if page_obj.has_next %}<a href="?{% if query_string %}{{ query_string }}&amp;{% endif %}page={{ page_obj.next_page_number }}#san-pham">Sau ›</a>{% endif %}
       </nav>
     {% endif %}
   {% else %}
-    <p class="empty">Chưa có sản phẩm nào{% if category %} trong danh mục này{% endif %}.</p>
+    {% if is_filtered %}<p class="empty">Không tìm thấy sản phẩm phù hợp. <a href="{{ reset_url }}">Xóa bộ lọc</a></p>{% else %}<p class="empty">Chưa có sản phẩm nào{% if category %} trong danh mục này{% endif %}.</p>{% endif %}
   {% endif %}
 {% endblock %}

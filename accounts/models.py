@@ -38,6 +38,11 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
+    class Role(models.TextChoices):
+        CUSTOMER = "customer", "Khách hàng"
+        STAFF = "staff", "Nhân viên"
+        ADMIN = "admin", "Quản trị viên"
+
     email = models.EmailField("Email", unique=True)
     full_name = models.CharField("Họ và tên", max_length=150)
     phone = models.CharField(
@@ -60,6 +65,22 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+    @property
+    def role(self) -> str:
+        if self.is_superuser:
+            return self.Role.ADMIN
+        if self.is_staff:
+            return self.Role.STAFF
+        return self.Role.CUSTOMER
+
+    @property
+    def is_locked(self) -> bool:
+        if not self.is_active:
+            return True
+        if self.locked_until and self.locked_until > timezone.now():
+            return True
+        return False
 
 
 class Address(models.Model):

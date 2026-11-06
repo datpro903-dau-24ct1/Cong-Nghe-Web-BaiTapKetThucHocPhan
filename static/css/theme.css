@@ -120,6 +120,21 @@
   .cats a { display: inline-block; padding: 6px 14px; border: 1px solid var(--border); border-radius: 999px; color: var(--text); text-decoration: none; background: var(--surface); }
   .cats a:hover { border-color: var(--pink); }
   .cats a.active { background: var(--grad); border-color: transparent; color: #fff; }
+  /* Form tìm kiếm / lọc / sắp xếp (CN08): mỗi bộ lọc là một chip, bấm để mở ô nhập */
+  .filter-form { margin: 0 0 24px; }
+  .filter-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-start; }
+  .chip { position: relative; }
+  .chip summary { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; cursor: pointer; list-style: none; user-select: none; font-weight: 600; color: var(--text); background: var(--surface); border: 1px solid var(--border); border-radius: 10px; transition: border-color .15s; }
+  .chip summary::-webkit-details-marker { display: none; }
+  .chip summary .ico { color: var(--link); flex: none; }
+  .chip summary:hover, .chip[open] summary { border-color: var(--pink); }
+  .chip.active summary { background: var(--grad); border-color: transparent; color: #fff; }
+  .chip.active summary .ico { color: #fff; }
+  .chip-panel { position: absolute; z-index: 20; top: calc(100% + 6px); left: 0; display: flex; flex-direction: column; gap: 8px; min-width: 240px; padding: 12px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: 0 12px 32px rgba(0, 0, 0, .5); }
+  .filter-row .btn { cursor: pointer; padding-block: 9px; }
+  .filter-reset { align-self: center; color: var(--muted); }
+  .filter-reset:hover { color: var(--pink); }
+  @media (max-width: 600px) { .chip-panel { position: fixed; left: 16px; right: 16px; top: auto; bottom: 16px; } }
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 16px; }
   .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: transform .15s, border-color .15s, box-shadow .15s; }
   .card:hover { transform: translateY(-3px); border-color: var(--pink); box-shadow: 0 10px 26px rgba(236, 72, 153, .2); }
@@ -180,3 +195,95 @@
 .specs th { width: 38%; color: var(--muted); font-weight: 600; }
 .description h2 { font-size: 20px; margin: 24px 0 8px; }
 @media (max-width: 800px) { .detail { grid-template-columns: 1fr; } }
+
+/* Giỏ hàng (CN09) */
+.cart-link { color: var(--text); text-decoration: none; }
+.cart-link:hover { color: var(--pink); }
+.cart-link .badge { display: inline-block; min-width: 20px; padding: 0 6px; border-radius: 999px; background: var(--grad); color: #fff; font-size: 12px; font-weight: 700; text-align: center; }
+.add-to-cart { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; margin: 16px 0; }
+.add-to-cart label { display: flex; flex-direction: column; gap: 4px; color: var(--muted); font-size: 14px; }
+.add-to-cart input[type="number"] { width: 90px; }
+.cart-lines { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.cart-line { display: grid; grid-template-columns: 88px 1fr auto; gap: 16px; align-items: center; padding: 12px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+.cart-line.unavailable { opacity: .75; border-style: dashed; }
+.cart-thumb { width: 88px; height: 88px; object-fit: cover; border-radius: 8px; background: var(--surface-2); }
+.cart-name { color: var(--text); font-weight: 700; text-decoration: none; }
+a.cart-name:hover { color: var(--pink); }
+.cart-price { margin: 4px 0 0; color: var(--muted); }
+.cart-problem { margin: 6px 0 0; color: #ff8fb8; font-size: 14px; }
+.cart-actions { display: grid; gap: 8px; justify-items: end; }
+.cart-qty { display: flex; gap: 8px; align-items: center; }
+.cart-qty input[type="number"] { width: 80px; }
+.cart-total { margin: 0; color: var(--pink); font-weight: 800; font-size: 18px; }
+.cart-summary { display: flex; justify-content: space-between; align-items: center; margin: 20px 0 12px; padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); font-size: 18px; }
+.cart-summary strong { color: var(--pink); font-size: 24px; }
+@media (max-width: 600px) { .cart-line { grid-template-columns: 64px 1fr; } .cart-thumb { width: 64px; height: 64px; } .cart-actions { grid-column: 1 / -1; grid-template-columns: 1fr auto auto; justify-items: start; align-items: center; } }
+
+/* Đặt hàng / Checkout (CN12) */
+.cart-footer-actions { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 12px; }
+.checkout-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.checkout-form { padding: 20px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); display: grid; gap: 14px; }
+.checkout-manual { border: 1px solid var(--border); border-radius: 8px; padding: 14px; margin: 0; display: grid; gap: 10px; }
+.checkout-manual legend { padding: 0 8px; color: var(--muted); font-weight: 600; }
+.checkout-actions { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+.checkout-summary { padding: 20px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+.checkout-summary h2 { margin: 0 0 14px; font-size: 20px; }
+.checkout-items { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.checkout-items li { display: flex; justify-content: space-between; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+@media (max-width: 800px) { .checkout-grid { grid-template-columns: 1fr; } }
+
+/* Lịch sử & Chi tiết đơn hàng (CN14) */
+.order-card-head, .order-card-foot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+.order-card-head { margin-bottom: 8px; }
+.order-card-foot { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
+.order-status-cancelled { color: #ff8fb8; border-color: rgba(236, 72, 153, .5); }
+.order-status-completed { color: #86efac; border-color: rgba(34, 197, 94, .4); }
+
+
+/* Đánh giá & Bình luận sản phẩm (CN18) */
+.rating-badge, .review-stars { color: #fbbf24; font-weight: 700; }
+.reviews-section { margin-top: 32px; }
+.review-form { padding: 18px; margin-bottom: 20px; display: grid; gap: 12px; }
+.review-form h3 { margin: 0 0 4px; font-size: 18px; }
+.review-list { display: grid; gap: 12px; }
+.review-item { padding: 14px 16px; }
+.review-header { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 6px; }
+.review-comment { margin: 6px 0 0; line-height: 1.5; }
+
+
+/* Dashboard thống kê (CN25) */
+.dashboard-filter { padding: 16px; margin-bottom: 20px; }
+.dashboard-filter-fields { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end; }
+.dashboard-filter-fields label { display: flex; flex-direction: column; gap: 4px; font-size: 14px; color: var(--muted); }
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
+.kpi-card { padding: 18px; display: flex; flex-direction: column; gap: 6px; }
+.kpi-value { font-size: 26px; font-weight: 800; color: var(--pink); }
+.dashboard-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; }
+.dashboard-panel { padding: 18px; }
+.dashboard-panel h2 { margin-top: 0; font-size: 18px; }
+
+
+/* Giao diện responsive, trang lỗi 404/500 & thông báo (CN26) */
+.messages li.success { background: rgba(34, 197, 94, .14); border-color: rgba(34, 197, 94, .5); color: #bbf7d0; }
+.messages li.warning { background: rgba(245, 158, 11, .14); border-color: rgba(245, 158, 11, .5); color: #fde68a; }
+.messages li.info { background: rgba(139, 92, 246, .15); border-color: rgba(139, 92, 246, .45); }
+.error-page { text-align: center; padding: 40px 24px; }
+.error-code { font-size: 64px; font-weight: 900; line-height: 1; margin: 0 0 12px; color: var(--pink); }
+.noscript-thumbs { display: flex; flex-wrap: wrap; gap: 10px; margin: 4px 0 0; }
+
+@media (max-width: 768px) {
+  main.narrow { margin: 16px 12px; padding: 20px 16px; }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+  .specs { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .dashboard-cols { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .logo { font-size: 17px; margin-right: 4px; }
+  .nav a, .nav summary, .account a, .linklike { padding: 6px 8px; font-size: 14px; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .card .price { font-size: 15px; }
+  .detail-price { font-size: 24px; }
+  .btn { width: 100%; text-align: center; }
+  .checkout-actions .btn, .cart-footer-actions .btn, .add-to-cart .btn, .filter-row .btn { width: auto; }
+}

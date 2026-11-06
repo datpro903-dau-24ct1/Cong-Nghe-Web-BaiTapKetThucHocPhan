@@ -1,15 +1,38 @@
 from django.conf import settings
 from django.contrib import messages
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
+from django.core.mail import send_mail
 from django.http import Http404
 from django.shortcuts import redirect, render
+from django.urls import reverse
 from django.utils.http import url_has_allowed_host_and_scheme
 from django.views.decorators.http import require_POST
 
+from carts import services as cart_services
+from carts.stores import DbCartStore, SessionCartStore
+
 from . import selectors, services
-from .forms import AddressEditForm, AddressForm, LoginForm, ProfileForm, RegisterForm
+from .forms import (
+    AddressEditForm,
+    AddressForm,
+    LoginForm,
+    PasswordChangeCustomForm,
+    PasswordResetConfirmForm,
+    PasswordResetRequestForm,
+    ProfileForm,
+    RegisterForm,
+)
+
+
+def _login_and_merge_cart(request, user):
+    """Đăng nhập user và gộp giỏ hàng từ session vào giỏ database (CN10)."""
+    session_store = SessionCartStore(request.session)
+    warnings = cart_services.merge_carts(session_store, DbCartStore(user))
+    login(request, user)
+    for warning in warnings:
+        messages.warning(request, warning)
 
 
 def _safe_next_url(request, next_url):
@@ -35,7 +58,7 @@ def register_view(request):
         except ValidationError as exc:
             form.add_error(None, exc)
         else:
-            login(request, user)
+            _login_and_merge_cart(request, user)
             messages.success(request, "Đăng ký thành công. Chào mừng bạn!")
             return redirect(settings.LOGIN_REDIRECT_URL)
     return render(request, "accounts/register.html", {"form": form})
@@ -54,7 +77,7 @@ def login_view(request):
         except ValidationError as exc:
             form.add_error(None, exc)
         else:
-            login(request, user)
+            _login_and_merge_cart(request, user)
             return redirect(_safe_next_url(request, next_url))
     return render(request, "accounts/login.html", {"form": form, "next": next_url})
 
@@ -160,3 +183,87 @@ def address_set_default_view(request, pk):
     services.set_default_address(_get_address_or_404(request, pk))
     messages.success(request, "Đã đặt làm địa chỉ mặc định.")
     return redirect("accounts:address_list")
+
+
+# ---------------------------------------------------------------- CN19: quên mật khẩu / đổi mật khẩu
+
+
+def password_reset_request_view(request):
+    form = (
+        PasswordResetRequestForm(request.POST)
+        if request.method == "POST"
+        else PasswordResetRequestForm()
+    )
+    if request.method == "POST" and form.is_valid():
+        services.request_password_reset(
+            form.cleaned_data["email"],
+            reset_url_builder=lambda uidb64, token: request.build_absolute_uri(
+                reverse("accounts:password_reset_confirm", args=[uidb64, token])
+            ),
+            send_mail_fn=send_mail,
+        )
+        messages.success(
+            request,
+            "Nếu email tồn tại trong hệ thống, liên kết đặt lại mật khẩu đã được gửi.",
+        )
+        return redirect("accounts:login")
+    return render(request, "accounts/password_reset.html", {"form": form})
+
+
+def password_reset_confirm_view(request, uidb64, token):
+    try:
+        services.verify_password_reset_token(uidb64, token)
+    except ValidationError as exc:
+        for msg in exc.messages:
+            messages.error(request, msg)
+        return redirect("accounts:password_reset")
+
+    form = (
+        PasswordResetConfirmForm(request.POST)
+        if request.method == "POST"
+        else PasswordResetConfirmForm()
+    )
+    if request.method == "POST" and form.is_valid():
+        try:
+            services.reset_password_with_token(
+                uidb64,
+                token,
+                new_password=form.cleaned_data["new_password"],
+            )
+        except ValidationError as exc:
+            if hasattr(exc, "error_dict"):
+                form.add_error(None, exc)
+            else:
+                for msg in exc.messages:
+                    messages.error(request, msg)
+                return redirect("accounts:password_reset")
+        else:
+            messages.success(
+                request, "Đặt lại mật khẩu thành công. Vui lòng đăng nhập."
+            )
+            return redirect("accounts:login")
+
+    return render(request, "accounts/password_reset_confirm.html", {"form": form})
+
+
+@login_required
+def password_change_view(request):
+    form = (
+        PasswordChangeCustomForm(request.POST)
+        if request.method == "POST"
+        else PasswordChangeCustomForm()
+    )
+    if request.method == "POST" and form.is_valid():
+        try:
+            user = services.change_password(
+                request.user,
+                old_password=form.cleaned_data["old_password"],
+                new_password=form.cleaned_data["new_password"],
+            )
+        except ValidationError as exc:
+            form.add_error(None, exc)
+        else:
+            update_session_auth_hash(request, user)
+            messages.success(request, "Đã đổi mật khẩu thành công.")
+            return redirect("accounts:profile")
+    return render(request, "accounts/password_change.html", {"form": form})

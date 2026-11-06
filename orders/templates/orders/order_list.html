@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Đơn hàng của tôi{% endblock %}
+{% block main_class %}wide{% endblock %}
+{% block content %}
+  <h1 class="section-title">Đơn hàng của tôi</h1>
+
+  {% if page_obj.object_list %}
+    <div class="order-list">
+      {% for order in page_obj %}
+        <div class="addr order-card">
+          <div class="order-card-head">
+            <div>
+              <strong><a href="{% url 'orders:detail' order.pk %}">Đơn #{{ order.pk }}</a></strong>
+              <span class="meta"> · {{ order.created_at|date:"d/m/Y H:i" }}</span>
+            </div>
+            <span class="badge order-status-{{ order.status }}">{{ order.get_status_display }}</span>
+          </div>
+          <p><strong>Người nhận:</strong> {{ order.receiver }} ({{ order.phone }}) — {{ order.street }}, {{ order.ward }}, {{ order.province }}</p>
+          <div class="order-card-foot">
+            <span>Tổng thanh toán: <strong class="cart-total">{{ order.total|floatformat:"0g" }} ₫</strong></span>
+            <a class="btn btn-ghost" href="{% url 'orders:detail' order.pk %}">Xem chi tiết</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if page_obj.paginator.num_pages > 1 %}
+      <nav class="pagination">
+        {% if page_obj.has_previous %}<a href="?page={{ page_obj.previous_page_number }}">← Trước</a>{% endif %}
+        <span>Trang {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
+        {% if page_obj.has_next %}<a href="?page={{ page_obj.next_page_number }}">Sau →</a>{% endif %}
+      </nav>
+    {% endif %}
+  {% else %}
+    <p class="empty">Bạn chưa có đơn hàng nào. <a href="{% url 'home' %}">Mua sắm ngay</a></p>
+  {% endif %}
+{% endblock %}

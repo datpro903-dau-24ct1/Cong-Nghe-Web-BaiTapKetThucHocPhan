@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block title %}Dashboard thống kê{% endblock %}
+{% block main_class %}wide{% endblock %}
+{% block content %}
+  <h1 class="section-title">Dashboard thống kê</h1>
+
+  <form method="get" class="dashboard-filter card">
+    <div class="dashboard-filter-fields">
+      <label for="{{ filter_form.start_date.id_for_label }}">
+        {{ filter_form.start_date.label }}
+        {{ filter_form.start_date }}
+      </label>
+      <label for="{{ filter_form.end_date.id_for_label }}">
+        {{ filter_form.end_date.label }}
+        {{ filter_form.end_date }}
+      </label>
+      <button type="submit" class="btn">Lọc dữ liệu</button>
+      <a href="{% url 'orders:dashboard' %}" class="btn btn-ghost">Đặt lại</a>
+    </div>
+  </form>
+
+  <section class="kpi-grid" aria-label="Chỉ số tổng quan">
+    <div class="kpi-card card">
+      <span class="meta">Doanh thu hoàn tất</span>
+      <strong class="kpi-value">{{ stats.total_revenue|floatformat:"0g" }} ₫</strong>
+    </div>
+    <div class="kpi-card card">
+      <span class="meta">Tổng số đơn hàng</span>
+      <strong class="kpi-value">{{ stats.total_orders }}</strong>
+    </div>
+    <div class="kpi-card card">
+      <span class="meta">Đơn hoàn tất</span>
+      <strong class="kpi-value order-status-completed">{{ stats.completed_orders }}</strong>
+    </div>
+    <div class="kpi-card card">
+      <span class="meta">Đơn đã hủy</span>
+      <strong class="kpi-value order-status-cancelled">{{ stats.cancelled_orders }}</strong>
+    </div>
+  </section>
+
+  <div class="dashboard-cols">
+    <section class="card dashboard-panel">
+      <h2>Top sản phẩm bán chạy</h2>
+      {% if stats.top_products %}
+        <table class="specs">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Sản phẩm</th>
+              <th>Số lượng đã bán</th>
+              <th>Doanh thu</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in stats.top_products %}
+              <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ item.product_name }}</td>
+                <td><strong>{{ item.total_quantity }}</strong></td>
+                <td>{{ item.total_amount|floatformat:"0g" }} ₫</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p class="meta">Chưa có dữ liệu sản phẩm bán ra trong khoảng thời gian này.</p>
+      {% endif %}
+    </section>
+
+    <section class="card dashboard-panel">
+      <h2>Đơn hàng &amp; doanh thu theo ngày</h2>
+      {% if stats.daily_orders %}
+        <table class="specs">
+          <thead>
+            <tr>
+              <th>Ngày (VN)</th>
+              <th>Tổng đơn</th>
+              <th>Hoàn tất</th>
+              <th>Doanh thu hoàn tất</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for day in stats.daily_orders %}
+              <tr>
+                <td>{{ day.date|date:"d/m/Y" }}</td>
+                <td>{{ day.order_count }}</td>
+                <td>{{ day.completed_count }}</td>
+                <td><strong>{{ day.revenue|floatformat:"0g" }} ₫</strong></td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p class="meta">Chưa có dữ liệu đơn hàng trong khoảng thời gian này.</p>
+      {% endif %}
+    </section>
+  </div>
+{% endblock %}
