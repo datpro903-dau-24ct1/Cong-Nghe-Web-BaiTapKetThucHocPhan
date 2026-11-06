@@ -1,0 +1,17 @@
+{% load static %}
+<div class="card">
+  <a class="card-link" href="{% url 'product_detail' product.slug %}">
+    {% with image=product.images.first %}
+      <img loading="lazy"
+           src="{% if image %}{{ image.image.url }}{% else %}{% static 'img/no-image.svg' %}{% endif %}"
+           alt="{{ product.name }}"
+           data-fallback="{% static 'img/no-image.svg' %}"
+           onerror="this.onerror=null;this.src=this.dataset.fallback;">
+    {% endwith %}
+    <div class="info">
+      <p class="name">{{ product.name }}</p>
+      <p class="meta">{{ product.series.name }} · {{ product.brand.name }}</p>
+      <p class="price">{{ product.price|floatformat:"0g" }} ₫{% if product.stock == 0 %}<span class="badge">Hết hàng</span>{% endif %}</p>
+    </div>
+  </a>
+</div>

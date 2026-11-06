@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Sổ địa chỉ{% endblock %}
+{% block content %}
+  <h1>Sổ địa chỉ giao hàng</h1>
+  {% for address in addresses %}
+    <div class="addr">
+      <p>
+        <strong>{{ address.receiver }}</strong> · {{ address.phone }}
+        {% if address.is_default %}<span class="tag-default"> [Mặc định]</span>{% endif %}
+      </p>
+      <p>{{ address.street }}, {{ address.ward }}, {{ address.district }}, {{ address.province }}</p>
+      <a href="{% url 'accounts:address_edit' address.pk %}">Sửa</a>
+      {% if not address.is_default %}
+        <form method="post" action="{% url 'accounts:address_set_default' address.pk %}">
+          {% csrf_token %}<button type="submit" class="linklike">Đặt mặc định</button>
+        </form>
+      {% endif %}
+      <form method="post" action="{% url 'accounts:address_delete' address.pk %}"
+            onsubmit="return confirm('Xóa địa chỉ này?');">
+        {% csrf_token %}<button type="submit" class="linklike">Xóa</button>
+      </form>
+    </div>
+  {% empty %}
+    <p>Bạn chưa có địa chỉ nào.</p>
+  {% endfor %}
+  <p><a class="btn" href="{% url 'accounts:address_add' %}">Thêm địa chỉ</a></p>
+  <p><a href="{% url 'accounts:profile' %}">Quay lại hồ sơ</a></p>
+{% endblock %}

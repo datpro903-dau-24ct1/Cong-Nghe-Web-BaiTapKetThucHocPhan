@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}{% if category %}{{ category.name }}{% else %}Sản phẩm mới nhất{% endif %}{% endblock %}
+{% block main_class %}wide{% endblock %}
+{% block content %}
+  {% if not category and page_obj.number == 1 %}
+    <section class="hero">
+      <h1>Mô hình Anime chính hãng</h1>
+      <p>Figure, Nendoroid và nhiều mẫu mô hình được tuyển chọn cho người sưu tầm.</p>
+      <a class="btn" href="#san-pham">Xem sản phẩm</a>
+    </section>
+    <ul class="services">
+      <li><span class="dot"></span><div><strong>Giao hàng toàn quốc</strong><span>Đóng gói cẩn thận</span></div></li>
+      <li><span class="dot"></span><div><strong>Thanh toán COD</strong><span>Nhận hàng rồi trả tiền</span></div></li>
+      <li><span class="dot"></span><div><strong>Hàng chính hãng</strong><span>Nguồn gốc rõ ràng</span></div></li>
+      <li><span class="dot"></span><div><strong>Hỗ trợ đổi trả</strong><span>Theo chính sách cửa hàng</span></div></li>
+    </ul>
+  {% endif %}
+
+  <h1 class="section-title" id="san-pham">{% if category %}{{ category.name }}{% else %}Sản phẩm mới nhất{% endif %}</h1>
+
+  <ul class="cats">
+    <li><a href="{% url 'home' %}"{% if not category %} class="active"{% endif %}>Tất cả</a></li>
+    {% for c in nav_categories %}
+      <li><a href="{% url 'category' c.slug %}"{% if category and c.pk == category.pk %} class="active"{% endif %}>{{ c.name }}</a></li>
+    {% endfor %}
+  </ul>
+
+  {% if page_obj.object_list %}
+    <div class="grid">
+      {% for product in page_obj %}
+        {% include "catalog/_product_card.html" %}
+      {% endfor %}
+    </div>
+
+    {% if page_obj.paginator.num_pages > 1 %}
+      <nav class="pagination">
+        {% if page_obj.has_previous %}<a href="?page={{ page_obj.previous_page_number }}#san-pham">‹ Trước</a>{% endif %}
+        <span>Trang {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
+        {% if page_obj.has_next %}<a href="?page={{ page_obj.next_page_number }}#san-pham">Sau ›</a>{% endif %}
+      </nav>
+    {% endif %}
+  {% else %}
+    <p class="empty">Chưa có sản phẩm nào{% if category %} trong danh mục này{% endif %}.</p>
+  {% endif %}
+{% endblock %}

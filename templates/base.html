@@ -1,0 +1,82 @@
+{% load static %}<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0d0b14">
+  <title>{% block title %}Shop Mô hình Anime{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/theme.css' %}">
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+  <header class="site-header">
+    <div class="bar container">
+      <a class="logo" href="{% url 'home' %}">Shop Mô hình Anime</a>
+      <nav class="nav" aria-label="Menu chính">
+        <a href="{% url 'home' %}">Trang chủ</a>
+        {% if nav_categories %}
+          <details class="menu">
+            <summary>Danh mục</summary>
+            <ul>
+              {% for c in nav_categories %}<li><a href="{% url 'category' c.slug %}">{{ c.name }}</a></li>{% endfor %}
+            </ul>
+          </details>
+        {% endif %}
+      </nav>
+      <span class="spacer"></span>
+      <div class="account">
+        {% if user.is_authenticated %}
+          <span class="hello">Xin chào, {{ user.full_name }}</span>
+          <a href="{% url 'accounts:profile' %}">Tài khoản</a>
+          <form method="post" action="{% url 'accounts:logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="linklike">Đăng xuất</button>
+          </form>
+        {% else %}
+          <a href="{% url 'accounts:login' %}">Đăng nhập</a>
+          <a href="{% url 'accounts:register' %}">Đăng ký</a>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}<li class="{{ message.tags }}">{{ message }}</li>{% endfor %}
+    </ul>
+  {% endif %}
+
+  <main class="{% block main_class %}narrow{% endblock %}">{% block content %}{% endblock %}</main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="cols">
+        <div>
+          <h4>Shop Mô hình Anime</h4>
+          <p>Mô hình anime chính hãng. Cập nhật địa chỉ, giờ mở cửa và số điện thoại của cửa hàng tại đây.</p>
+        </div>
+        <div>
+          <h4>Danh mục</h4>
+          <ul>
+            {% for c in nav_categories %}<li><a href="{% url 'category' c.slug %}">{{ c.name }}</a></li>{% empty %}<li>Đang cập nhật</li>{% endfor %}
+          </ul>
+        </div>
+        <div>
+          <h4>Tài khoản</h4>
+          <ul>
+            {% if user.is_authenticated %}
+              <li><a href="{% url 'accounts:profile' %}">Hồ sơ của tôi</a></li>
+              <li><a href="{% url 'accounts:address_list' %}">Sổ địa chỉ</a></li>
+            {% else %}
+              <li><a href="{% url 'accounts:login' %}">Đăng nhập</a></li>
+              <li><a href="{% url 'accounts:register' %}">Đăng ký</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+      <p class="copy">© Shop Mô hình Anime. Đồ án môn học.</p>
+    </div>
+  </footer>
+</body>
+</html>

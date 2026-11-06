@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Hồ sơ của tôi{% endblock %}
+{% block content %}
+  <h1>Hồ sơ của tôi</h1>
+  <p>Email: <strong>{{ user.email }}</strong></p>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn">Lưu thay đổi</button>
+  </form>
+  <p><a href="{% url 'accounts:address_list' %}">Quản lý sổ địa chỉ giao hàng</a></p>
+{% endblock %}

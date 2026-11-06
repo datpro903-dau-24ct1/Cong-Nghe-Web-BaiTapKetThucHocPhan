@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+  <h1>{{ title }}</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn">Lưu</button>
+  </form>
+  <p><a href="{% url 'accounts:address_list' %}">Quay lại sổ địa chỉ</a></p>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ product.name }}{% endblock %}
+{% block main_class %}wide{% endblock %}
+{% block content %}
+  <nav class="breadcrumb" aria-label="Đường dẫn">
+    <a href="{% url 'home' %}">Trang chủ</a> ›
+    <a href="{% url 'category' product.category.slug %}">{{ product.category.name }}</a> ›
+    <span>{{ product.name }}</span>
+  </nav>
+
+  <div class="detail">
+    <div class="gallery">
+      {% if images %}
+        <img id="main-image" class="main" src="{{ images.0.image.url }}" alt="{{ product.name }}"
+             data-fallback="{% static 'img/no-image.svg' %}"
+             onerror="this.onerror=null;this.src=this.dataset.fallback;">
+        {% if images|length > 1 %}
+          <ul class="thumbs">
+            {% for image in images %}
+              <li>
+                <button type="button" data-src="{{ image.image.url }}"
+                        onclick="document.getElementById('main-image').src=this.dataset.src"
+                        aria-label="Xem ảnh {{ forloop.counter }}">
+                  <img src="{{ image.image.url }}" alt="" loading="lazy"
+                       data-fallback="{% static 'img/no-image.svg' %}"
+                       onerror="this.onerror=null;this.src=this.dataset.fallback;">
+                </button>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% else %}
+        <img class="main" src="{% static 'img/no-image.svg' %}" alt="{{ product.name }}">
+      {% endif %}
+    </div>
+
+    <div class="detail-info">
+      <h1>{{ product.name }}</h1>
+      <p class="meta">{{ product.series.name }} · {{ product.brand.name }}</p>
+      <p class="detail-price">{{ product.price|floatformat:"0g" }} ₫</p>
+      <p>
+        {% if product.stock > 0 %}
+          <span class="stock in">Còn hàng ({{ product.stock }})</span>
+        {% else %}
+          <span class="stock out">Hết hàng</span>
+        {% endif %}
+      </p>
+
+      <table class="specs">
+        <tr><th>Danh mục</th><td><a href="{% url 'category' product.category.slug %}">{{ product.category.name }}</a></td></tr>
+        <tr><th>Bộ anime</th><td>{{ product.series.name }}</td></tr>
+        <tr><th>Hãng sản xuất</th><td>{{ product.brand.name }}</td></tr>
+        {% if product.scale %}<tr><th>Tỉ lệ</th><td>{{ product.scale }}</td></tr>{% endif %}
+        {% if product.material %}<tr><th>Chất liệu</th><td>{{ product.material }}</td></tr>{% endif %}
+        {% if product.height_cm %}<tr><th>Chiều cao</th><td>{{ product.height_cm }} cm</td></tr>{% endif %}
+      </table>
+
+      {% if product.description %}
+        <div class="description">
+          <h2>Mô tả</h2>
+          {{ product.description|linebreaks }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if related_products %}
+    <h2 class="section-title">Sản phẩm liên quan</h2>
+    <div class="grid">
+      {% for related in related_products %}
+        {% include "catalog/_product_card.html" with product=related %}
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endblock %}
