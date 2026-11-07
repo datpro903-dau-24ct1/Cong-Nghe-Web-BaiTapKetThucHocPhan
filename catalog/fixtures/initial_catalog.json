@@ -1,0 +1,1928 @@
+[
+{
+  "model": "catalog.category",
+  "pk": 1,
+  "fields": {
+    "name": "Nendoroid",
+    "slug": "nendoroid"
+  }
+},
+{
+  "model": "catalog.category",
+  "pk": 2,
+  "fields": {
+    "name": "Prize Figure",
+    "slug": "prize-figure"
+  }
+},
+{
+  "model": "catalog.category",
+  "pk": 3,
+  "fields": {
+    "name": "Scale Figure",
+    "slug": "scale-figure"
+  }
+},
+{
+  "model": "catalog.category",
+  "pk": 4,
+  "fields": {
+    "name": "Figma",
+    "slug": "figma"
+  }
+},
+{
+  "model": "catalog.category",
+  "pk": 5,
+  "fields": {
+    "name": "SH Figuarts",
+    "slug": "sh-figuarts"
+  }
+},
+{
+  "model": "catalog.category",
+  "pk": 6,
+  "fields": {
+    "name": "Revoltech",
+    "slug": "revoltech"
+  }
+},
+{
+  "model": "catalog.category",
+  "pk": 7,
+  "fields": {
+    "name": "Model Kit",
+    "slug": "model-kit"
+  }
+},
+{
+  "model": "catalog.series",
+  "pk": 1,
+  "fields": {
+    "name": "DraggonBall",
+    "slug": "draggonball"
+  }
+},
+{
+  "model": "catalog.series",
+  "pk": 2,
+  "fields": {
+    "name": "Naruto",
+    "slug": "naruto"
+  }
+},
+{
+  "model": "catalog.series",
+  "pk": 3,
+  "fields": {
+    "name": "One piece",
+    "slug": "one-piece"
+  }
+},
+{
+  "model": "catalog.series",
+  "pk": 4,
+  "fields": {
+    "name": "Jujutsu Kaisen",
+    "slug": "jujutsu-kaisen"
+  }
+},
+{
+  "model": "catalog.series",
+  "pk": 5,
+  "fields": {
+    "name": "Attack On Titan",
+    "slug": "attack-on-titan"
+  }
+},
+{
+  "model": "catalog.series",
+  "pk": 6,
+  "fields": {
+    "name": "Demon Slayer",
+    "slug": "demon-slayer"
+  }
+},
+{
+  "model": "catalog.series",
+  "pk": 7,
+  "fields": {
+    "name": "Chainsaw Man",
+    "slug": "chainsaw-man"
+  }
+},
+{
+  "model": "catalog.series",
+  "pk": 8,
+  "fields": {
+    "name": "Mobile Suit Gundam",
+    "slug": "mobile-suit-gundam"
+  }
+},
+{
+  "model": "catalog.series",
+  "pk": 9,
+  "fields": {
+    "name": "Spy x Family",
+    "slug": "spy-x-family"
+  }
+},
+{
+  "model": "catalog.series",
+  "pk": 10,
+  "fields": {
+    "name": "Bleach",
+    "slug": "bleach"
+  }
+},
+{
+  "model": "catalog.series",
+  "pk": 11,
+  "fields": {
+    "name": "Berserk",
+    "slug": "berserk"
+  }
+},
+{
+  "model": "catalog.series",
+  "pk": 12,
+  "fields": {
+    "name": "Fate/Grand Order",
+    "slug": "fategrand-order"
+  }
+},
+{
+  "model": "catalog.brand",
+  "pk": 1,
+  "fields": {
+    "name": "Bandai",
+    "slug": "bandai"
+  }
+},
+{
+  "model": "catalog.brand",
+  "pk": 2,
+  "fields": {
+    "name": "Banpresto",
+    "slug": "banpresto"
+  }
+},
+{
+  "model": "catalog.brand",
+  "pk": 3,
+  "fields": {
+    "name": "Good Smile Company",
+    "slug": "good-smile-company"
+  }
+},
+{
+  "model": "catalog.brand",
+  "pk": 4,
+  "fields": {
+    "name": "Kotobukiya",
+    "slug": "kotobukiya"
+  }
+},
+{
+  "model": "catalog.brand",
+  "pk": 5,
+  "fields": {
+    "name": "Max Factory",
+    "slug": "max-factory"
+  }
+},
+{
+  "model": "catalog.brand",
+  "pk": 6,
+  "fields": {
+    "name": "MegaHouse",
+    "slug": "megahouse"
+  }
+},
+{
+  "model": "catalog.brand",
+  "pk": 7,
+  "fields": {
+    "name": "Alter",
+    "slug": "alter"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 1,
+  "fields": {
+    "name": "Nendoroid SuKuNa",
+    "slug": "nendoroid-sukuna",
+    "category": 1,
+    "series": 4,
+    "brand": 3,
+    "price": "500000",
+    "scale": "",
+    "material": "PVC",
+    "height_cm": 12,
+    "stock": 9,
+    "description": "Mô hình Chibi có các phụ kiện:\r\n• 3 biểu cảm gương mặt: Khuôn mặt chuẩn, mặt nhếch mép, và mặt cuồng loạn.\r\n• Tấm nền minh họa Malevolent Shrine (Bành trướng lãnh địa - Miếu Ma Diệt).\r\n• Phụ kiện xương sọ bò.",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-05T11:58:05.425Z",
+    "updated_at": "2026-11-06T07:28:59.434Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 2,
+  "fields": {
+    "name": "Mô hình Dragon Ball GT Match Makers - Super Saiyan 4 Gogeta",
+    "slug": "mo-hinh-dragon-ball-gt-match-makers-super-saiyan-4-gogeta",
+    "category": 3,
+    "series": 1,
+    "brand": 2,
+    "price": "490000",
+    "scale": "1/7",
+    "material": "PVC",
+    "height_cm": 21,
+    "stock": 19,
+    "description": "Mô hình Dragon Ball GT Match Makers - Super Saiyan 4 Gogeta (Vs Yi-Shinron) Banpresto - BANDAI\r\nSản phẩm nhựa cao cấp với độ sắc nét cao \r\nSản xuất bởi Bandai Namco Nhật Bản chính hãng \r\nAn toàn với trẻ em",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T06:12:51.869Z",
+    "updated_at": "2026-11-06T06:51:39.020Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 3,
+  "fields": {
+    "name": "Mô hình Dragon Ball Z: Wrath of the Dragon Movies Collection Super Saiyan 3 Goku",
+    "slug": "mo-hinh-dragon-ball-z-wrath-of-the-dragon-movies-collection-super-saiyan-3-goku",
+    "category": 3,
+    "series": 1,
+    "brand": 5,
+    "price": "21000000",
+    "scale": "1/4",
+    "material": "PVC",
+    "height_cm": 21,
+    "stock": 2,
+    "description": "Dragon Ball Z: Wrath of the Dragon Movies Collection Super Saiyan 3 Goku (Dragon Fist Attack Ver.) 1/4 Scale Limited Edition Statue bản giới hạn",
+    "is_active": true,
+    "rating_avg": "5.00",
+    "review_count": 1,
+    "created_at": "2026-11-06T06:16:24.061Z",
+    "updated_at": "2026-11-06T13:36:15.894Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 26,
+  "fields": {
+    "name": "Mô hình Jujutsu Kaisen - Satoru Gojo Hollow Purple Ver.",
+    "slug": "mo-hinh-jujutsu-kaisen-satoru-gojo-hollow-purple-ver",
+    "category": 3,
+    "series": 4,
+    "brand": 4,
+    "price": "3450000",
+    "scale": "1/7",
+    "material": "PVC & ABS",
+    "height_cm": 26,
+    "stock": 12,
+    "description": "Mô hình Jujutsu Kaisen - Satoru Gojo Hollow Purple Ver. thuộc dòng Scale Figure từ bộ Jujutsu Kaisen, sản xuất chính hãng bởi Kotobukiya với chất liệu PVC & ABS sắc nét.",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:50.575Z",
+    "updated_at": "2026-11-06T16:03:50.575Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 27,
+  "fields": {
+    "name": "Nendoroid Spy x Family - Anya Forger Casual Outfit Ver.",
+    "slug": "nendoroid-spy-x-family-anya-forger-casual-outfit-ver",
+    "category": 1,
+    "series": 9,
+    "brand": 3,
+    "price": "1150000",
+    "scale": "Non-scale",
+    "material": "ABS & PVC",
+    "height_cm": 10,
+    "stock": 25,
+    "description": "Nendoroid Spy x Family - Anya Forger Casual Outfit Ver. thuộc dòng Nendoroid từ bộ Spy x Family, sản xuất chính hãng bởi Good Smile Company với chất liệu ABS & PVC sắc nét.",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:50.643Z",
+    "updated_at": "2026-11-06T16:03:50.643Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 28,
+  "fields": {
+    "name": "Mô hình Jujutsu Kaisen - Yuji Itadori Black Flash Battle Ver.",
+    "slug": "mo-hinh-jujutsu-kaisen-yuji-itadori-black-flash-battle-ver",
+    "category": 5,
+    "series": 4,
+    "brand": 1,
+    "price": "1490000",
+    "scale": "1/12",
+    "material": "PVC & ABS",
+    "height_cm": 15,
+    "stock": 18,
+    "description": "Mô hình Jujutsu Kaisen - Yuji Itadori Black Flash Battle Ver. thuộc dòng SH Figuarts từ bộ Jujutsu Kaisen, sản xuất chính hãng bởi Bandai với chất liệu PVC & ABS sắc nét.",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:50.887Z",
+    "updated_at": "2026-11-06T16:03:50.887Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 29,
+  "fields": {
+    "name": "Mô hình Naruto Shippuden - Naruto Uzumaki Kurama Link Mode",
+    "slug": "mo-hinh-naruto-shippuden-naruto-uzumaki-kurama-link-mode",
+    "category": 2,
+    "series": 2,
+    "brand": 2,
+    "price": "790000",
+    "scale": "Non-scale",
+    "material": "PVC",
+    "height_cm": 22,
+    "stock": 22,
+    "description": "Mô hình Naruto Shippuden - Naruto Uzumaki Kurama Link Mode thuộc dòng Prize Figure từ bộ Naruto, sản xuất chính hãng bởi Banpresto với chất liệu PVC sắc nét.",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:50.924Z",
+    "updated_at": "2026-11-06T16:03:50.924Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 30,
+  "fields": {
+    "name": "Nendoroid Jujutsu Kaisen - Megumi Fushiguro (#1406)",
+    "slug": "nendoroid-jujutsu-kaisen-megumi-fushiguro-1406",
+    "category": 1,
+    "series": 4,
+    "brand": 3,
+    "price": "1190000",
+    "scale": "Non-scale",
+    "material": "ABS & PVC",
+    "height_cm": 10,
+    "stock": 20,
+    "description": "Nendoroid Jujutsu Kaisen - Megumi Fushiguro (#1406) thuộc dòng Nendoroid từ bộ Jujutsu Kaisen, sản xuất chính hãng bởi Good Smile Company với chất liệu ABS & PVC sắc nét.",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:50.964Z",
+    "updated_at": "2026-11-06T16:03:50.964Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 31,
+  "fields": {
+    "name": "Nendoroid Chainsaw Man - Power & Nyako (#1580)",
+    "slug": "nendoroid-chainsaw-man-power-nyako-1580",
+    "category": 1,
+    "series": 7,
+    "brand": 3,
+    "price": "1250000",
+    "scale": "Non-scale",
+    "material": "ABS & PVC",
+    "height_cm": 10,
+    "stock": 16,
+    "description": "Nendoroid Chainsaw Man - Power & Nyako (#1580) thuộc dòng Nendoroid từ bộ Chainsaw Man, sản xuất chính hãng bởi Good Smile Company với chất liệu ABS & PVC sắc nét.",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:51.037Z",
+    "updated_at": "2026-11-06T16:03:51.037Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 32,
+  "fields": {
+    "name": "S.H.Figuarts One Piece - Monkey D. Luffy Gear 5",
+    "slug": "shfiguarts-one-piece-monkey-d-luffy-gear-5",
+    "category": 5,
+    "series": 3,
+    "brand": 1,
+    "price": "1850000",
+    "scale": "1/12",
+    "material": "PVC & ABS",
+    "height_cm": 15,
+    "stock": 15,
+    "description": "S.H.Figuarts One Piece - Monkey D. Luffy Gear 5 thuộc dòng SH Figuarts từ bộ One piece, sản xuất chính hãng bởi Bandai với độ chi tiết cao (15.5cm, PVC & ABS).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:57.797Z",
+    "updated_at": "2026-11-06T16:03:57.797Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 33,
+  "fields": {
+    "name": "Portrait.Of.Pirates One Piece - Roronoa Zoro King of Hell",
+    "slug": "portraitofpirates-one-piece-roronoa-zoro-king-of-hell",
+    "category": 3,
+    "series": 3,
+    "brand": 6,
+    "price": "4500000",
+    "scale": "1/8",
+    "material": "PVC & ABS",
+    "height_cm": 24,
+    "stock": 8,
+    "description": "Portrait.Of.Pirates One Piece - Roronoa Zoro King of Hell thuộc dòng Scale Figure từ bộ One piece, sản xuất chính hãng bởi MegaHouse với độ chi tiết cao (24cm, PVC & ABS).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:57.816Z",
+    "updated_at": "2026-11-06T16:03:57.816Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 34,
+  "fields": {
+    "name": "Mô hình One Piece Battle Record Collection - Vinsmoke Sanji",
+    "slug": "mo-hinh-one-piece-battle-record-collection-vinsmoke-sanji",
+    "category": 2,
+    "series": 3,
+    "brand": 2,
+    "price": "550000",
+    "scale": "Non-scale",
+    "material": "PVC",
+    "height_cm": 19,
+    "stock": 30,
+    "description": "Mô hình One Piece Battle Record Collection - Vinsmoke Sanji thuộc dòng Prize Figure từ bộ One piece, sản xuất chính hãng bởi Banpresto với độ chi tiết cao (19cm, PVC).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:57.832Z",
+    "updated_at": "2026-11-06T16:03:57.832Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 35,
+  "fields": {
+    "name": "Mô hình One Piece King of Artist - Trafalgar Law Wano Ver.",
+    "slug": "mo-hinh-one-piece-king-of-artist-trafalgar-law-wano-ver",
+    "category": 2,
+    "series": 3,
+    "brand": 2,
+    "price": "650000",
+    "scale": "Non-scale",
+    "material": "PVC",
+    "height_cm": 23,
+    "stock": 20,
+    "description": "Mô hình One Piece King of Artist - Trafalgar Law Wano Ver. thuộc dòng Prize Figure từ bộ One piece, sản xuất chính hãng bởi Banpresto với độ chi tiết cao (23cm, PVC).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:57.850Z",
+    "updated_at": "2026-11-06T16:03:57.850Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 36,
+  "fields": {
+    "name": "S.H.Figuarts One Piece - Portgas D. Ace Fire Fist",
+    "slug": "shfiguarts-one-piece-portgas-d-ace-fire-fist",
+    "category": 5,
+    "series": 3,
+    "brand": 1,
+    "price": "1650000",
+    "scale": "1/12",
+    "material": "PVC & ABS",
+    "height_cm": 15,
+    "stock": 14,
+    "description": "S.H.Figuarts One Piece - Portgas D. Ace Fire Fist thuộc dòng SH Figuarts từ bộ One piece, sản xuất chính hãng bởi Bandai với độ chi tiết cao (15cm, PVC & ABS).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:57.870Z",
+    "updated_at": "2026-11-06T16:03:57.870Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 37,
+  "fields": {
+    "name": "Mô hình One Piece DXF The Grandline Series - Shanks",
+    "slug": "mo-hinh-one-piece-dxf-the-grandline-series-shanks",
+    "category": 2,
+    "series": 3,
+    "brand": 2,
+    "price": "620000",
+    "scale": "Non-scale",
+    "material": "PVC",
+    "height_cm": 17,
+    "stock": 18,
+    "description": "Mô hình One Piece DXF The Grandline Series - Shanks thuộc dòng Prize Figure từ bộ One piece, sản xuất chính hãng bởi Banpresto với độ chi tiết cao (17cm, PVC).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:57.891Z",
+    "updated_at": "2026-11-06T16:03:57.891Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 38,
+  "fields": {
+    "name": "Mô hình One Piece Glitter & Glamours - Boa Hancock",
+    "slug": "mo-hinh-one-piece-glitter-glamours-boa-hancock",
+    "category": 2,
+    "series": 3,
+    "brand": 2,
+    "price": "590000",
+    "scale": "Non-scale",
+    "material": "PVC",
+    "height_cm": 25,
+    "stock": 24,
+    "description": "Mô hình One Piece Glitter & Glamours - Boa Hancock thuộc dòng Prize Figure từ bộ One piece, sản xuất chính hãng bởi Banpresto với độ chi tiết cao (25cm, PVC).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:57.909Z",
+    "updated_at": "2026-11-06T16:03:57.909Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 39,
+  "fields": {
+    "name": "ARTFX J Jujutsu Kaisen - Yuta Okkotsu 1/8 Scale",
+    "slug": "artfx-j-jujutsu-kaisen-yuta-okkotsu-18-scale",
+    "category": 3,
+    "series": 4,
+    "brand": 4,
+    "price": "3250000",
+    "scale": "1/8",
+    "material": "PVC & ABS",
+    "height_cm": 21,
+    "stock": 9,
+    "description": "ARTFX J Jujutsu Kaisen - Yuta Okkotsu 1/8 Scale thuộc dòng Scale Figure từ bộ Jujutsu Kaisen, sản xuất chính hãng bởi Kotobukiya với độ chi tiết cao (21cm, PVC & ABS).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:57.930Z",
+    "updated_at": "2026-11-06T16:03:57.930Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 40,
+  "fields": {
+    "name": "Figma Jujutsu Kaisen - Nobara Kugisaki",
+    "slug": "figma-jujutsu-kaisen-nobara-kugisaki",
+    "category": 4,
+    "series": 4,
+    "brand": 5,
+    "price": "1690000",
+    "scale": "1/12",
+    "material": "ABS & PVC",
+    "height_cm": 14,
+    "stock": 12,
+    "description": "Figma Jujutsu Kaisen - Nobara Kugisaki thuộc dòng Figma từ bộ Jujutsu Kaisen, sản xuất chính hãng bởi Max Factory với độ chi tiết cao (14cm, ABS & PVC).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:57.948Z",
+    "updated_at": "2026-11-06T16:03:57.948Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 41,
+  "fields": {
+    "name": "Mô hình Jujutsu Kaisen King of Artist - Toji Fushiguro",
+    "slug": "mo-hinh-jujutsu-kaisen-king-of-artist-toji-fushiguro",
+    "category": 2,
+    "series": 4,
+    "brand": 2,
+    "price": "680000",
+    "scale": "Non-scale",
+    "material": "PVC",
+    "height_cm": 22,
+    "stock": 25,
+    "description": "Mô hình Jujutsu Kaisen King of Artist - Toji Fushiguro thuộc dòng Prize Figure từ bộ Jujutsu Kaisen, sản xuất chính hãng bởi Banpresto với độ chi tiết cao (22cm, PVC).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:57.968Z",
+    "updated_at": "2026-11-06T16:03:57.968Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 42,
+  "fields": {
+    "name": "Mô hình Jujutsu Kaisen Jukon no Kata - Suguru Geto",
+    "slug": "mo-hinh-jujutsu-kaisen-jukon-no-kata-suguru-geto",
+    "category": 2,
+    "series": 4,
+    "brand": 2,
+    "price": "640000",
+    "scale": "Non-scale",
+    "material": "PVC",
+    "height_cm": 18,
+    "stock": 19,
+    "description": "Mô hình Jujutsu Kaisen Jukon no Kata - Suguru Geto thuộc dòng Prize Figure từ bộ Jujutsu Kaisen, sản xuất chính hãng bởi Banpresto với độ chi tiết cao (18cm, PVC).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:57.984Z",
+    "updated_at": "2026-11-06T16:03:57.984Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 43,
+  "fields": {
+    "name": "ARTFX J Demon Slayer - Tanjiro Kamado Hinokami Kagura",
+    "slug": "artfx-j-demon-slayer-tanjiro-kamado-hinokami-kagura",
+    "category": 3,
+    "series": 6,
+    "brand": 4,
+    "price": "3200000",
+    "scale": "1/8",
+    "material": "PVC & ABS",
+    "height_cm": 21,
+    "stock": 10,
+    "description": "ARTFX J Demon Slayer - Tanjiro Kamado Hinokami Kagura thuộc dòng Scale Figure từ bộ Demon Slayer, sản xuất chính hãng bởi Kotobukiya với độ chi tiết cao (21cm, PVC & ABS).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:57.999Z",
+    "updated_at": "2026-11-06T16:03:57.999Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 44,
+  "fields": {
+    "name": "Nendoroid Demon Slayer - Nezuko Kamado Blood Demon Art Ver.",
+    "slug": "nendoroid-demon-slayer-nezuko-kamado-blood-demon-art-ver",
+    "category": 1,
+    "series": 6,
+    "brand": 3,
+    "price": "1190000",
+    "scale": "Non-scale",
+    "material": "ABS & PVC",
+    "height_cm": 10,
+    "stock": 22,
+    "description": "Nendoroid Demon Slayer - Nezuko Kamado Blood Demon Art Ver. thuộc dòng Nendoroid từ bộ Demon Slayer, sản xuất chính hãng bởi Good Smile Company với độ chi tiết cao (10cm, ABS & PVC).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.013Z",
+    "updated_at": "2026-11-06T16:03:58.013Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 45,
+  "fields": {
+    "name": "Figma Demon Slayer - Zenitsu Agatsuma DX Edition",
+    "slug": "figma-demon-slayer-zenitsu-agatsuma-dx-edition",
+    "category": 4,
+    "series": 6,
+    "brand": 5,
+    "price": "1950000",
+    "scale": "1/12",
+    "material": "ABS & PVC",
+    "height_cm": 13,
+    "stock": 11,
+    "description": "Figma Demon Slayer - Zenitsu Agatsuma DX Edition thuộc dòng Figma từ bộ Demon Slayer, sản xuất chính hãng bởi Max Factory với độ chi tiết cao (13.5cm, ABS & PVC).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.028Z",
+    "updated_at": "2026-11-06T16:03:58.028Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 46,
+  "fields": {
+    "name": "S.H.Figuarts Demon Slayer - Kyojuro Rengoku Flame Hashira",
+    "slug": "shfiguarts-demon-slayer-kyojuro-rengoku-flame-hashira",
+    "category": 5,
+    "series": 6,
+    "brand": 1,
+    "price": "1690000",
+    "scale": "1/12",
+    "material": "PVC & ABS",
+    "height_cm": 15,
+    "stock": 13,
+    "description": "S.H.Figuarts Demon Slayer - Kyojuro Rengoku Flame Hashira thuộc dòng SH Figuarts từ bộ Demon Slayer, sản xuất chính hãng bởi Bandai với độ chi tiết cao (15cm, PVC & ABS).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.042Z",
+    "updated_at": "2026-11-06T16:03:58.042Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 47,
+  "fields": {
+    "name": "S.H.Figuarts Demon Slayer - Shinobu Kocho Insect Hashira",
+    "slug": "shfiguarts-demon-slayer-shinobu-kocho-insect-hashira",
+    "category": 5,
+    "series": 6,
+    "brand": 1,
+    "price": "1620000",
+    "scale": "1/12",
+    "material": "PVC & ABS",
+    "height_cm": 14,
+    "stock": 15,
+    "description": "S.H.Figuarts Demon Slayer - Shinobu Kocho Insect Hashira thuộc dòng SH Figuarts từ bộ Demon Slayer, sản xuất chính hãng bởi Bandai với độ chi tiết cao (14cm, PVC & ABS).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.057Z",
+    "updated_at": "2026-11-06T16:03:58.057Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 48,
+  "fields": {
+    "name": "Mô hình Demon Slayer Vibration Stars - Tengen Uzui",
+    "slug": "mo-hinh-demon-slayer-vibration-stars-tengen-uzui",
+    "category": 2,
+    "series": 6,
+    "brand": 2,
+    "price": "620000",
+    "scale": "Non-scale",
+    "material": "PVC",
+    "height_cm": 18,
+    "stock": 20,
+    "description": "Mô hình Demon Slayer Vibration Stars - Tengen Uzui thuộc dòng Prize Figure từ bộ Demon Slayer, sản xuất chính hãng bởi Banpresto với độ chi tiết cao (18cm, PVC).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.071Z",
+    "updated_at": "2026-11-06T16:03:58.071Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 49,
+  "fields": {
+    "name": "S.H.Figuarts Naruto Shippuden - Sasuke Uchiha Susanoo Ver.",
+    "slug": "shfiguarts-naruto-shippuden-sasuke-uchiha-susanoo-ver",
+    "category": 5,
+    "series": 2,
+    "brand": 1,
+    "price": "1550000",
+    "scale": "1/12",
+    "material": "PVC & ABS",
+    "height_cm": 14,
+    "stock": 14,
+    "description": "S.H.Figuarts Naruto Shippuden - Sasuke Uchiha Susanoo Ver. thuộc dòng SH Figuarts từ bộ Naruto, sản xuất chính hãng bởi Bandai với độ chi tiết cao (14.5cm, PVC & ABS).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.086Z",
+    "updated_at": "2026-11-06T16:03:58.086Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 50,
+  "fields": {
+    "name": "Precious G.E.M. Series Naruto Shippuden - Itachi Uchiha Susanoo",
+    "slug": "precious-gem-series-naruto-shippuden-itachi-uchiha-susanoo",
+    "category": 3,
+    "series": 2,
+    "brand": 6,
+    "price": "5400000",
+    "scale": "Non-scale",
+    "material": "PVC & ABS",
+    "height_cm": 38,
+    "stock": 5,
+    "description": "Precious G.E.M. Series Naruto Shippuden - Itachi Uchiha Susanoo thuộc dòng Scale Figure từ bộ Naruto, sản xuất chính hãng bởi MegaHouse với độ chi tiết cao (38cm, PVC & ABS).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.099Z",
+    "updated_at": "2026-11-06T16:03:58.099Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 51,
+  "fields": {
+    "name": "Mô hình Naruto Shippuden Vibration Stars - Kakashi Hatake",
+    "slug": "mo-hinh-naruto-shippuden-vibration-stars-kakashi-hatake",
+    "category": 2,
+    "series": 2,
+    "brand": 2,
+    "price": "610000",
+    "scale": "Non-scale",
+    "material": "PVC",
+    "height_cm": 18,
+    "stock": 26,
+    "description": "Mô hình Naruto Shippuden Vibration Stars - Kakashi Hatake thuộc dòng Prize Figure từ bộ Naruto, sản xuất chính hãng bởi Banpresto với độ chi tiết cao (18cm, PVC).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.114Z",
+    "updated_at": "2026-11-06T16:03:58.114Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 52,
+  "fields": {
+    "name": "Mô hình Naruto Shippuden Panel Spectacle - Minato Namikaze",
+    "slug": "mo-hinh-naruto-shippuden-panel-spectacle-minato-namikaze",
+    "category": 2,
+    "series": 2,
+    "brand": 2,
+    "price": "690000",
+    "scale": "Non-scale",
+    "material": "PVC",
+    "height_cm": 20,
+    "stock": 18,
+    "description": "Mô hình Naruto Shippuden Panel Spectacle - Minato Namikaze thuộc dòng Prize Figure từ bộ Naruto, sản xuất chính hãng bởi Banpresto với độ chi tiết cao (20cm, PVC).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.129Z",
+    "updated_at": "2026-11-06T16:03:58.129Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 53,
+  "fields": {
+    "name": "S.H.Figuarts Dragon Ball Super - Vegeta Super Saiyan Blue",
+    "slug": "shfiguarts-dragon-ball-super-vegeta-super-saiyan-blue",
+    "category": 5,
+    "series": 1,
+    "brand": 1,
+    "price": "1350000",
+    "scale": "1/12",
+    "material": "PVC & ABS",
+    "height_cm": 14,
+    "stock": 16,
+    "description": "S.H.Figuarts Dragon Ball Super - Vegeta Super Saiyan Blue thuộc dòng SH Figuarts từ bộ DraggonBall, sản xuất chính hãng bởi Bandai với độ chi tiết cao (14cm, PVC & ABS).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.143Z",
+    "updated_at": "2026-11-06T16:03:58.143Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 54,
+  "fields": {
+    "name": "Mô hình Dragon Ball Super Blood of Saiyans - Son Gohan Beast",
+    "slug": "mo-hinh-dragon-ball-super-blood-of-saiyans-son-gohan-beast",
+    "category": 2,
+    "series": 1,
+    "brand": 2,
+    "price": "680000",
+    "scale": "Non-scale",
+    "material": "PVC",
+    "height_cm": 20,
+    "stock": 22,
+    "description": "Mô hình Dragon Ball Super Blood of Saiyans - Son Gohan Beast thuộc dòng Prize Figure từ bộ DraggonBall, sản xuất chính hãng bởi Banpresto với độ chi tiết cao (20cm, PVC).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.158Z",
+    "updated_at": "2026-11-06T16:03:58.158Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 55,
+  "fields": {
+    "name": "Mô hình Dragon Ball Super Clearise - Broly Full Power",
+    "slug": "mo-hinh-dragon-ball-super-clearise-broly-full-power",
+    "category": 2,
+    "series": 1,
+    "brand": 2,
+    "price": "750000",
+    "scale": "Non-scale",
+    "material": "PVC",
+    "height_cm": 23,
+    "stock": 15,
+    "description": "Mô hình Dragon Ball Super Clearise - Broly Full Power thuộc dòng Prize Figure từ bộ DraggonBall, sản xuất chính hãng bởi Banpresto với độ chi tiết cao (23cm, PVC).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.176Z",
+    "updated_at": "2026-11-06T16:03:58.176Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 56,
+  "fields": {
+    "name": "S.H.Figuarts Dragon Ball Z - Future Trunks Boy From The Future",
+    "slug": "shfiguarts-dragon-ball-z-future-trunks-boy-from-the-future",
+    "category": 5,
+    "series": 1,
+    "brand": 1,
+    "price": "1580000",
+    "scale": "1/12",
+    "material": "PVC & ABS",
+    "height_cm": 14,
+    "stock": 12,
+    "description": "S.H.Figuarts Dragon Ball Z - Future Trunks Boy From The Future thuộc dòng SH Figuarts từ bộ DraggonBall, sản xuất chính hãng bởi Bandai với độ chi tiết cao (14cm, PVC & ABS).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.192Z",
+    "updated_at": "2026-11-06T16:03:58.192Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 57,
+  "fields": {
+    "name": "S.H.Figuarts Dragon Ball Z - Frieza Fourth Form Final Battle",
+    "slug": "shfiguarts-dragon-ball-z-frieza-fourth-form-final-battle",
+    "category": 5,
+    "series": 1,
+    "brand": 1,
+    "price": "1290000",
+    "scale": "1/12",
+    "material": "PVC & ABS",
+    "height_cm": 12,
+    "stock": 17,
+    "description": "S.H.Figuarts Dragon Ball Z - Frieza Fourth Form Final Battle thuộc dòng SH Figuarts từ bộ DraggonBall, sản xuất chính hãng bởi Bandai với độ chi tiết cao (12.5cm, PVC & ABS).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.207Z",
+    "updated_at": "2026-11-06T16:03:58.207Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 58,
+  "fields": {
+    "name": "ARTFX J Attack on Titan - Levi Ackerman Fortitude Ver. 1/7",
+    "slug": "artfx-j-attack-on-titan-levi-ackerman-fortitude-ver-17",
+    "category": 3,
+    "series": 5,
+    "brand": 4,
+    "price": "3650000",
+    "scale": "1/7",
+    "material": "PVC & ABS",
+    "height_cm": 17,
+    "stock": 7,
+    "description": "ARTFX J Attack on Titan - Levi Ackerman Fortitude Ver. 1/7 thuộc dòng Scale Figure từ bộ Attack On Titan, sản xuất chính hãng bởi Kotobukiya với độ chi tiết cao (17cm, PVC & ABS).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.222Z",
+    "updated_at": "2026-11-06T16:03:58.222Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 59,
+  "fields": {
+    "name": "Pop Up Parade Attack on Titan - Eren Yeager Attack Titan Ver.",
+    "slug": "pop-up-parade-attack-on-titan-eren-yeager-attack-titan-ver",
+    "category": 2,
+    "series": 5,
+    "brand": 3,
+    "price": "1050000",
+    "scale": "Non-scale",
+    "material": "ABS & PVC",
+    "height_cm": 17,
+    "stock": 20,
+    "description": "Pop Up Parade Attack on Titan - Eren Yeager Attack Titan Ver. thuộc dòng Prize Figure từ bộ Attack On Titan, sản xuất chính hãng bởi Good Smile Company với độ chi tiết cao (17cm, ABS & PVC).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.241Z",
+    "updated_at": "2026-11-06T16:03:58.241Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 60,
+  "fields": {
+    "name": "Figma Attack on Titan - Mikasa Ackerman Final Season Ver.",
+    "slug": "figma-attack-on-titan-mikasa-ackerman-final-season-ver",
+    "category": 4,
+    "series": 5,
+    "brand": 5,
+    "price": "1890000",
+    "scale": "1/12",
+    "material": "ABS & PVC",
+    "height_cm": 14,
+    "stock": 10,
+    "description": "Figma Attack on Titan - Mikasa Ackerman Final Season Ver. thuộc dòng Figma từ bộ Attack On Titan, sản xuất chính hãng bởi Max Factory với độ chi tiết cao (14.5cm, ABS & PVC).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.258Z",
+    "updated_at": "2026-11-06T16:03:58.258Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 61,
+  "fields": {
+    "name": "Revoltech Amazing Yamaguchi - Chainsaw Man Denji Hybrid",
+    "slug": "revoltech-amazing-yamaguchi-chainsaw-man-denji-hybrid",
+    "category": 6,
+    "series": 7,
+    "brand": 4,
+    "price": "2250000",
+    "scale": "1/12",
+    "material": "PVC & ABS & POM",
+    "height_cm": 16,
+    "stock": 9,
+    "description": "Revoltech Amazing Yamaguchi - Chainsaw Man Denji Hybrid thuộc dòng Revoltech từ bộ Chainsaw Man, sản xuất chính hãng bởi Kotobukiya với độ chi tiết cao (16cm, PVC & ABS & POM).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.273Z",
+    "updated_at": "2026-11-06T16:03:58.273Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 62,
+  "fields": {
+    "name": "ARTFX J Chainsaw Man - Makima 1/8 Scale Figure",
+    "slug": "artfx-j-chainsaw-man-makima-18-scale-figure",
+    "category": 3,
+    "series": 7,
+    "brand": 4,
+    "price": "3150000",
+    "scale": "1/8",
+    "material": "PVC & ABS",
+    "height_cm": 22,
+    "stock": 11,
+    "description": "ARTFX J Chainsaw Man - Makima 1/8 Scale Figure thuộc dòng Scale Figure từ bộ Chainsaw Man, sản xuất chính hãng bởi Kotobukiya với độ chi tiết cao (22.5cm, PVC & ABS).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.287Z",
+    "updated_at": "2026-11-06T16:03:58.287Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 63,
+  "fields": {
+    "name": "Mô hình Chainsaw Man Vibration Stars - Aki Hayakawa",
+    "slug": "mo-hinh-chainsaw-man-vibration-stars-aki-hayakawa",
+    "category": 2,
+    "series": 7,
+    "brand": 2,
+    "price": "630000",
+    "scale": "Non-scale",
+    "material": "PVC",
+    "height_cm": 18,
+    "stock": 21,
+    "description": "Mô hình Chainsaw Man Vibration Stars - Aki Hayakawa thuộc dòng Prize Figure từ bộ Chainsaw Man, sản xuất chính hãng bởi Banpresto với độ chi tiết cao (18cm, PVC).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.302Z",
+    "updated_at": "2026-11-06T16:03:58.302Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 64,
+  "fields": {
+    "name": "Model Kit MGEX 1/100 Strike Freedom Gundam Ver.Ka",
+    "slug": "model-kit-mgex-1100-strike-freedom-gundam-verka",
+    "category": 7,
+    "series": 8,
+    "brand": 1,
+    "price": "3890000",
+    "scale": "1/100",
+    "material": "PS & ABS & PE",
+    "height_cm": 19,
+    "stock": 6,
+    "description": "Model Kit MGEX 1/100 Strike Freedom Gundam Ver.Ka thuộc dòng Model Kit từ bộ Mobile Suit Gundam, sản xuất chính hãng bởi Bandai với độ chi tiết cao (19cm, PS & ABS & PE).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.315Z",
+    "updated_at": "2026-11-06T16:03:58.315Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 65,
+  "fields": {
+    "name": "Model Kit RG 1/144 RX-93-v2 Hi-Nu Gundam",
+    "slug": "model-kit-rg-1144-rx-93-v2-hi-nu-gundam",
+    "category": 7,
+    "series": 8,
+    "brand": 1,
+    "price": "1390000",
+    "scale": "1/144",
+    "material": "PS & ABS",
+    "height_cm": 15,
+    "stock": 15,
+    "description": "Model Kit RG 1/144 RX-93-v2 Hi-Nu Gundam thuộc dòng Model Kit từ bộ Mobile Suit Gundam, sản xuất chính hãng bởi Bandai với độ chi tiết cao (15cm, PS & ABS).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.330Z",
+    "updated_at": "2026-11-06T16:03:58.330Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 66,
+  "fields": {
+    "name": "Model Kit HG 1/144 XVX-016 Gundam Aerial Witch from Mercury",
+    "slug": "model-kit-hg-1144-xvx-016-gundam-aerial-witch-from-mercury",
+    "category": 7,
+    "series": 8,
+    "brand": 1,
+    "price": "520000",
+    "scale": "1/144",
+    "material": "PS & ABS",
+    "height_cm": 13,
+    "stock": 28,
+    "description": "Model Kit HG 1/144 XVX-016 Gundam Aerial Witch from Mercury thuộc dòng Model Kit từ bộ Mobile Suit Gundam, sản xuất chính hãng bởi Bandai với độ chi tiết cao (13cm, PS & ABS).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.344Z",
+    "updated_at": "2026-11-06T16:03:58.344Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 67,
+  "fields": {
+    "name": "Model Kit MG 1/100 Gundam Barbatos Iron-Blooded Orphans",
+    "slug": "model-kit-mg-1100-gundam-barbatos-iron-blooded-orphans",
+    "category": 7,
+    "series": 8,
+    "brand": 1,
+    "price": "1290000",
+    "scale": "1/100",
+    "material": "PS & ABS",
+    "height_cm": 18,
+    "stock": 14,
+    "description": "Model Kit MG 1/100 Gundam Barbatos Iron-Blooded Orphans thuộc dòng Model Kit từ bộ Mobile Suit Gundam, sản xuất chính hãng bởi Bandai với độ chi tiết cao (18cm, PS & ABS).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.360Z",
+    "updated_at": "2026-11-06T16:03:58.361Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 68,
+  "fields": {
+    "name": "S.H.Figuarts Spy x Family - Yor Forger Thorn Princess",
+    "slug": "shfiguarts-spy-x-family-yor-forger-thorn-princess",
+    "category": 5,
+    "series": 9,
+    "brand": 1,
+    "price": "1520000",
+    "scale": "1/12",
+    "material": "PVC & ABS",
+    "height_cm": 15,
+    "stock": 16,
+    "description": "S.H.Figuarts Spy x Family - Yor Forger Thorn Princess thuộc dòng SH Figuarts từ bộ Spy x Family, sản xuất chính hãng bởi Bandai với độ chi tiết cao (15cm, PVC & ABS).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.374Z",
+    "updated_at": "2026-11-06T16:03:58.374Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 69,
+  "fields": {
+    "name": "Nendoroid Spy x Family - Loid Forger Twilight (#1701)",
+    "slug": "nendoroid-spy-x-family-loid-forger-twilight-1701",
+    "category": 1,
+    "series": 9,
+    "brand": 3,
+    "price": "1120000",
+    "scale": "Non-scale",
+    "material": "ABS & PVC",
+    "height_cm": 10,
+    "stock": 19,
+    "description": "Nendoroid Spy x Family - Loid Forger Twilight (#1701) thuộc dòng Nendoroid từ bộ Spy x Family, sản xuất chính hãng bởi Good Smile Company với độ chi tiết cao (10cm, ABS & PVC).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.388Z",
+    "updated_at": "2026-11-06T16:03:58.388Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 70,
+  "fields": {
+    "name": "Precious G.E.M. Series Bleach - Ichigo Kurosaki Thousand-Year Blood War",
+    "slug": "precious-gem-series-bleach-ichigo-kurosaki-thousand-year-blood-war",
+    "category": 3,
+    "series": 10,
+    "brand": 6,
+    "price": "4100000",
+    "scale": "1/8",
+    "material": "PVC & ABS",
+    "height_cm": 25,
+    "stock": 6,
+    "description": "Precious G.E.M. Series Bleach - Ichigo Kurosaki Thousand-Year Blood War thuộc dòng Scale Figure từ bộ Bleach, sản xuất chính hãng bởi MegaHouse với độ chi tiết cao (25cm, PVC & ABS).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.402Z",
+    "updated_at": "2026-11-06T16:03:58.402Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 71,
+  "fields": {
+    "name": "Mô hình Bleach Solid and Souls - Kenpachi Zaraki",
+    "slug": "mo-hinh-bleach-solid-and-souls-kenpachi-zaraki",
+    "category": 2,
+    "series": 10,
+    "brand": 2,
+    "price": "640000",
+    "scale": "Non-scale",
+    "material": "PVC",
+    "height_cm": 21,
+    "stock": 18,
+    "description": "Mô hình Bleach Solid and Souls - Kenpachi Zaraki thuộc dòng Prize Figure từ bộ Bleach, sản xuất chính hãng bởi Banpresto với độ chi tiết cao (21cm, PVC).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.415Z",
+    "updated_at": "2026-11-06T16:03:58.415Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 72,
+  "fields": {
+    "name": "S.H.Figuarts Berserk - Guts Berserker Armor Unleashed",
+    "slug": "shfiguarts-berserk-guts-berserker-armor-unleashed",
+    "category": 5,
+    "series": 11,
+    "brand": 1,
+    "price": "2190000",
+    "scale": "1/12",
+    "material": "PVC & ABS & Fabric",
+    "height_cm": 16,
+    "stock": 8,
+    "description": "S.H.Figuarts Berserk - Guts Berserker Armor Unleashed thuộc dòng SH Figuarts từ bộ Berserk, sản xuất chính hãng bởi Bandai với độ chi tiết cao (16cm, PVC & ABS & Fabric).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.428Z",
+    "updated_at": "2026-11-06T16:03:58.428Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 73,
+  "fields": {
+    "name": "Figma Berserk - Griffith Hawk of Light Renewal Edition",
+    "slug": "figma-berserk-griffith-hawk-of-light-renewal-edition",
+    "category": 4,
+    "series": 11,
+    "brand": 5,
+    "price": "2050000",
+    "scale": "1/12",
+    "material": "ABS & PVC",
+    "height_cm": 15,
+    "stock": 7,
+    "description": "Figma Berserk - Griffith Hawk of Light Renewal Edition thuộc dòng Figma từ bộ Berserk, sản xuất chính hãng bởi Max Factory với độ chi tiết cao (15.5cm, ABS & PVC).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.443Z",
+    "updated_at": "2026-11-06T16:03:58.443Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 74,
+  "fields": {
+    "name": "Scale Figure Fate/Grand Order - Saber Altria Pendragon Dress Ver.",
+    "slug": "scale-figure-fategrand-order-saber-altria-pendragon-dress-ver",
+    "category": 3,
+    "series": 12,
+    "brand": 7,
+    "price": "3950000",
+    "scale": "1/7",
+    "material": "PVC & ABS",
+    "height_cm": 23,
+    "stock": 7,
+    "description": "Scale Figure Fate/Grand Order - Saber Altria Pendragon Dress Ver. thuộc dòng Scale Figure từ bộ Fate/Grand Order, sản xuất chính hãng bởi Alter với độ chi tiết cao (23cm, PVC & ABS).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.461Z",
+    "updated_at": "2026-11-06T16:03:58.461Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 75,
+  "fields": {
+    "name": "Figma Fate/Grand Order - Ruler Jeanne d'Arc",
+    "slug": "figma-fategrand-order-ruler-jeanne-darc",
+    "category": 4,
+    "series": 12,
+    "brand": 5,
+    "price": "1920000",
+    "scale": "1/12",
+    "material": "ABS & PVC",
+    "height_cm": 14,
+    "stock": 9,
+    "description": "Figma Fate/Grand Order - Ruler Jeanne d'Arc thuộc dòng Figma từ bộ Fate/Grand Order, sản xuất chính hãng bởi Max Factory với độ chi tiết cao (14.5cm, ABS & PVC).",
+    "is_active": true,
+    "rating_avg": "0.00",
+    "review_count": 0,
+    "created_at": "2026-11-06T16:03:58.477Z",
+    "updated_at": "2026-11-06T16:03:58.477Z"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 1,
+  "fields": {
+    "product": 1,
+    "image": "products/2026/11/sukuna_20261027202957.jpg",
+    "is_main": false
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 2,
+  "fields": {
+    "product": 2,
+    "image": "products/2026/11/gogetas4.jpg",
+    "is_main": false
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 3,
+  "fields": {
+    "product": 2,
+    "image": "products/2026/11/gogetas42.jpg",
+    "is_main": false
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 4,
+  "fields": {
+    "product": 3,
+    "image": "products/2026/11/original.webp",
+    "is_main": false
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 5,
+  "fields": {
+    "product": 3,
+    "image": "products/2026/11/original_1.webp",
+    "is_main": false
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 30,
+  "fields": {
+    "product": 26,
+    "image": "products/2026/11/mo-hinh-jujutsu-kaisen-satoru-gojo-hollow-purple-ver-1.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 31,
+  "fields": {
+    "product": 27,
+    "image": "products/2026/11/nendoroid-spy-x-family-anya-forger-casual-outfit-ver-1.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 32,
+  "fields": {
+    "product": 27,
+    "image": "products/2026/11/nendoroid-spy-x-family-anya-forger-casual-outfit-ver-2.jpg",
+    "is_main": false
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 33,
+  "fields": {
+    "product": 28,
+    "image": "products/2026/11/mo-hinh-jujutsu-kaisen-yuji-itadori-black-flash-battle-ver-1.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 34,
+  "fields": {
+    "product": 28,
+    "image": "products/2026/11/mo-hinh-jujutsu-kaisen-yuji-itadori-black-flash-battle-ver-2.jpg",
+    "is_main": false
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 35,
+  "fields": {
+    "product": 28,
+    "image": "products/2026/11/mo-hinh-jujutsu-kaisen-yuji-itadori-black-flash-battle-ver-3.jpg",
+    "is_main": false
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 36,
+  "fields": {
+    "product": 29,
+    "image": "products/2026/11/mo-hinh-naruto-shippuden-naruto-uzumaki-kurama-link-mode-1.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 37,
+  "fields": {
+    "product": 30,
+    "image": "products/2026/11/nendoroid-jujutsu-kaisen-megumi-fushiguro-1406-1.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 38,
+  "fields": {
+    "product": 30,
+    "image": "products/2026/11/nendoroid-jujutsu-kaisen-megumi-fushiguro-1406-2.jpg",
+    "is_main": false
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 39,
+  "fields": {
+    "product": 31,
+    "image": "products/2026/11/nendoroid-chainsaw-man-power-nyako-1580-1.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 40,
+  "fields": {
+    "product": 31,
+    "image": "products/2026/11/nendoroid-chainsaw-man-power-nyako-1580-2.jpg",
+    "is_main": false
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 41,
+  "fields": {
+    "product": 32,
+    "image": "products/2026/11/shfiguarts-one-piece-monkey-d-luffy-gear-5.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 42,
+  "fields": {
+    "product": 33,
+    "image": "products/2026/11/portraitofpirates-one-piece-roronoa-zoro-king-of-hell.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 43,
+  "fields": {
+    "product": 34,
+    "image": "products/2026/11/mo-hinh-one-piece-battle-record-collection-vinsmoke-sanji.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 44,
+  "fields": {
+    "product": 35,
+    "image": "products/2026/11/mo-hinh-one-piece-king-of-artist-trafalgar-law-wano-ver.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 45,
+  "fields": {
+    "product": 36,
+    "image": "products/2026/11/shfiguarts-one-piece-portgas-d-ace-fire-fist.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 46,
+  "fields": {
+    "product": 37,
+    "image": "products/2026/11/mo-hinh-one-piece-dxf-the-grandline-series-shanks.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 47,
+  "fields": {
+    "product": 38,
+    "image": "products/2026/11/mo-hinh-one-piece-glitter-glamours-boa-hancock.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 48,
+  "fields": {
+    "product": 39,
+    "image": "products/2026/11/artfx-j-jujutsu-kaisen-yuta-okkotsu-18-scale.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 49,
+  "fields": {
+    "product": 40,
+    "image": "products/2026/11/figma-jujutsu-kaisen-nobara-kugisaki.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 50,
+  "fields": {
+    "product": 41,
+    "image": "products/2026/11/mo-hinh-jujutsu-kaisen-king-of-artist-toji-fushiguro.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 51,
+  "fields": {
+    "product": 42,
+    "image": "products/2026/11/mo-hinh-jujutsu-kaisen-jukon-no-kata-suguru-geto.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 52,
+  "fields": {
+    "product": 43,
+    "image": "products/2026/11/artfx-j-demon-slayer-tanjiro-kamado-hinokami-kagura.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 53,
+  "fields": {
+    "product": 44,
+    "image": "products/2026/11/nendoroid-demon-slayer-nezuko-kamado-blood-demon-art-ver.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 54,
+  "fields": {
+    "product": 45,
+    "image": "products/2026/11/figma-demon-slayer-zenitsu-agatsuma-dx-edition.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 55,
+  "fields": {
+    "product": 46,
+    "image": "products/2026/11/shfiguarts-demon-slayer-kyojuro-rengoku-flame-hashira.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 56,
+  "fields": {
+    "product": 47,
+    "image": "products/2026/11/shfiguarts-demon-slayer-shinobu-kocho-insect-hashira.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 57,
+  "fields": {
+    "product": 48,
+    "image": "products/2026/11/mo-hinh-demon-slayer-vibration-stars-tengen-uzui.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 58,
+  "fields": {
+    "product": 49,
+    "image": "products/2026/11/shfiguarts-naruto-shippuden-sasuke-uchiha-susanoo-ver.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 59,
+  "fields": {
+    "product": 50,
+    "image": "products/2026/11/precious-gem-series-naruto-shippuden-itachi-uchiha-susanoo.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 60,
+  "fields": {
+    "product": 51,
+    "image": "products/2026/11/mo-hinh-naruto-shippuden-vibration-stars-kakashi-hatake.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 61,
+  "fields": {
+    "product": 52,
+    "image": "products/2026/11/mo-hinh-naruto-shippuden-panel-spectacle-minato-namikaze.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 62,
+  "fields": {
+    "product": 53,
+    "image": "products/2026/11/shfiguarts-dragon-ball-super-vegeta-super-saiyan-blue.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 63,
+  "fields": {
+    "product": 54,
+    "image": "products/2026/11/mo-hinh-dragon-ball-super-blood-of-saiyans-son-gohan-beast.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 64,
+  "fields": {
+    "product": 55,
+    "image": "products/2026/11/mo-hinh-dragon-ball-super-clearise-broly-full-power.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 65,
+  "fields": {
+    "product": 56,
+    "image": "products/2026/11/shfiguarts-dragon-ball-z-future-trunks-boy-from-the-future.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 66,
+  "fields": {
+    "product": 57,
+    "image": "products/2026/11/shfiguarts-dragon-ball-z-frieza-fourth-form-final-battle.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 67,
+  "fields": {
+    "product": 58,
+    "image": "products/2026/11/artfx-j-attack-on-titan-levi-ackerman-fortitude-ver-17.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 68,
+  "fields": {
+    "product": 59,
+    "image": "products/2026/11/pop-up-parade-attack-on-titan-eren-yeager-attack-titan-ver.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 69,
+  "fields": {
+    "product": 60,
+    "image": "products/2026/11/figma-attack-on-titan-mikasa-ackerman-final-season-ver.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 70,
+  "fields": {
+    "product": 61,
+    "image": "products/2026/11/revoltech-amazing-yamaguchi-chainsaw-man-denji-hybrid.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 71,
+  "fields": {
+    "product": 62,
+    "image": "products/2026/11/artfx-j-chainsaw-man-makima-18-scale-figure.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 72,
+  "fields": {
+    "product": 63,
+    "image": "products/2026/11/mo-hinh-chainsaw-man-vibration-stars-aki-hayakawa.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 73,
+  "fields": {
+    "product": 64,
+    "image": "products/2026/11/model-kit-mgex-1100-strike-freedom-gundam-verka.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 74,
+  "fields": {
+    "product": 65,
+    "image": "products/2026/11/model-kit-rg-1144-rx-93-v2-hi-nu-gundam.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 75,
+  "fields": {
+    "product": 66,
+    "image": "products/2026/11/model-kit-hg-1144-xvx-016-gundam-aerial-witch-from-mercury.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 76,
+  "fields": {
+    "product": 67,
+    "image": "products/2026/11/model-kit-mg-1100-gundam-barbatos-iron-blooded-orphans.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 77,
+  "fields": {
+    "product": 68,
+    "image": "products/2026/11/shfiguarts-spy-x-family-yor-forger-thorn-princess.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 78,
+  "fields": {
+    "product": 69,
+    "image": "products/2026/11/nendoroid-spy-x-family-loid-forger-twilight-1701.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 79,
+  "fields": {
+    "product": 70,
+    "image": "products/2026/11/precious-gem-series-bleach-ichigo-kurosaki-thousand-year-blood-war.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 80,
+  "fields": {
+    "product": 71,
+    "image": "products/2026/11/mo-hinh-bleach-solid-and-souls-kenpachi-zaraki.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 81,
+  "fields": {
+    "product": 72,
+    "image": "products/2026/11/shfiguarts-berserk-guts-berserker-armor-unleashed.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 82,
+  "fields": {
+    "product": 73,
+    "image": "products/2026/11/figma-berserk-griffith-hawk-of-light-renewal-edition.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 83,
+  "fields": {
+    "product": 74,
+    "image": "products/2026/11/scale-figure-fategrand-order-saber-altria-pendragon-dress-ver.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 84,
+  "fields": {
+    "product": 75,
+    "image": "products/2026/11/figma-fategrand-order-ruler-jeanne-darc.jpg",
+    "is_main": true
+  }
+},
+{
+  "model": "catalog.review",
+  "pk": 1,
+  "fields": {
+    "product": 3,
+    "user": 1,
+    "rating": 5,
+    "comment": "Đẹp chất lượng",
+    "created_at": "2026-11-06T13:36:15.891Z",
+    "updated_at": "2026-11-06T13:36:15.891Z"
+  }
+}
+]

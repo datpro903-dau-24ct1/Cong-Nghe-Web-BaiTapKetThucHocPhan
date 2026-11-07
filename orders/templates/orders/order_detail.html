@@ -9,6 +9,37 @@
 
   <h1 class="section-title">Chi tiết đơn hàng #{{ order.pk }}</h1>
 
+  <!-- Thanh tiến trình trạng thái đơn hàng (Order Stepper) -->
+  {% if order.status == "cancelled" %}
+    <div class="order-stepper cancelled" aria-label="Tiến trình đơn hàng">
+      <div class="step done"><span class="step-dot">✓</span><span class="step-label">Đặt hàng</span></div>
+      <div class="step-line"></div>
+      <div class="step current cancelled-step"><span class="step-dot">✕</span><span class="step-label">Đã hủy đơn</span></div>
+    </div>
+  {% else %}
+    <div class="order-stepper" aria-label="Tiến trình đơn hàng">
+      <div class="step {% if order.status == 'pending' %}current{% else %}done{% endif %}">
+        <span class="step-dot">1</span>
+        <span class="step-label">Chờ xử lý</span>
+      </div>
+      <div class="step-line {% if order.status == 'confirmed' or order.status == 'shipping' or order.status == 'completed' %}active{% endif %}"></div>
+      <div class="step {% if order.status == 'confirmed' %}current{% elif order.status == 'shipping' or order.status == 'completed' %}done{% endif %}">
+        <span class="step-dot">2</span>
+        <span class="step-label">Đã xác nhận</span>
+      </div>
+      <div class="step-line {% if order.status == 'shipping' or order.status == 'completed' %}active{% endif %}"></div>
+      <div class="step {% if order.status == 'shipping' %}current{% elif order.status == 'completed' %}done{% endif %}">
+        <span class="step-dot">3</span>
+        <span class="step-label">Đang giao hàng</span>
+      </div>
+      <div class="step-line {% if order.status == 'completed' %}active{% endif %}"></div>
+      <div class="step {% if order.status == 'completed' %}current done{% endif %}">
+        <span class="step-dot">4</span>
+        <span class="step-label">Hoàn thành</span>
+      </div>
+    </div>
+  {% endif %}
+
   <div class="addr">
     <p><strong>Trạng thái:</strong> <span class="badge order-status-{{ order.status }}">{{ order.get_status_display }}</span></p>
     <p><strong>Ngày đặt:</strong> {{ order.created_at|date:"d/m/Y H:i" }}</p>

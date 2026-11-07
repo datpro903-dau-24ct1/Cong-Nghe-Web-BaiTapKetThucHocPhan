@@ -1,13 +1,79 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}{% if category %}{{ category.name }}{% else %}Sản phẩm mới nhất{% endif %}{% endblock %}
 {% block main_class %}wide{% endblock %}
 {% block content %}
   {% if not category and page_obj.number == 1 and not is_filtered %}
     <section class="hero">
-      <h1>Mô hình Anime chính hãng</h1>
-      <p>Figure, Nendoroid và nhiều mẫu mô hình được tuyển chọn cho người sưu tầm.</p>
-      <a class="btn" href="#san-pham">Xem sản phẩm</a>
+      <div class="hero-split">
+        <div class="hero-copy">
+          <span class="hero-pill">✦ MÔ HÌNH ANIME NHẬT BẢN CHÍNH HÃNG</span>
+          <h1>Mô hình Anime chính hãng</h1>
+          <p>Figure, Nendoroid và nhiều mẫu mô hình được tuyển chọn cho người sưu tầm.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#san-pham">Xem sản phẩm</a>
+            <div class="hero-metrics">
+              <div><strong>50+</strong><span>Mẫu Figure</span></div>
+              <div><strong>12+</strong><span>Bộ Anime</span></div>
+              <div><strong>100%</strong><span>Chính hãng</span></div>
+            </div>
+          </div>
+        </div>
+        {% if page_obj.object_list %}
+          <div class="hero-showcase" aria-hidden="true">
+            {% for p in page_obj %}
+              {% if forloop.counter <= 3 %}
+                {% with img=p.images.first %}
+                  {% if img %}
+                    <div class="hero-float-card float-{{ forloop.counter }}">
+                      <img src="{{ img.image.url }}" alt="" loading="lazy" decoding="async"
+                           data-fallback="{% static 'img/no-image.svg' %}"
+                           onerror="this.onerror=null;this.src=this.dataset.fallback;">
+                      <span>{{ p.series.name }}</span>
+                    </div>
+                  {% endif %}
+                {% endwith %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
     </section>
+
+    <div class="brand-marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>✦ GOOD SMILE COMPANY</span>
+        <span>✦ JUJUTSU KAISEN</span>
+        <span>✦ KOTOBUKIYA</span>
+        <span>✦ ONE PIECE</span>
+        <span>✦ BANDAI SPIRITS</span>
+        <span>✦ DEMON SLAYER</span>
+        <span>✦ MEGAHOUSE</span>
+        <span>✦ CHAINSAW MAN</span>
+        <span>✦ MAX FACTORY</span>
+        <span>✦ NARUTO SHIPPUDEN</span>
+        <span>✦ BANPRESTO</span>
+        <span>✦ SPY × FAMILY</span>
+        <span>✦ ALTER</span>
+        <span>✦ DRAGON BALL</span>
+        <!-- Nhân đôi dải chữ để cuộn vô tận không ngắt quãng -->
+        <span>✦ GOOD SMILE COMPANY</span>
+        <span>✦ JUJUTSU KAISEN</span>
+        <span>✦ KOTOBUKIYA</span>
+        <span>✦ ONE PIECE</span>
+        <span>✦ BANDAI SPIRITS</span>
+        <span>✦ DEMON SLAYER</span>
+        <span>✦ MEGAHOUSE</span>
+        <span>✦ CHAINSAW MAN</span>
+        <span>✦ MAX FACTORY</span>
+        <span>✦ NARUTO SHIPPUDEN</span>
+        <span>✦ BANPRESTO</span>
+        <span>✦ SPY × FAMILY</span>
+        <span>✦ ALTER</span>
+        <span>✦ DRAGON BALL</span>
+      </div>
+    </div>
+
     <ul class="services">
       <li><span class="dot"></span><div><strong>Giao hàng toàn quốc</strong><span>Đóng gói cẩn thận</span></div></li>
       <li><span class="dot"></span><div><strong>Thanh toán COD</strong><span>Nhận hàng rồi trả tiền</span></div></li>

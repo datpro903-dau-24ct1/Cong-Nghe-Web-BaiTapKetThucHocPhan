@@ -42,7 +42,7 @@
     <section class="card dashboard-panel">
       <h2>Top sản phẩm bán chạy</h2>
       {% if stats.top_products %}
-        <table class="specs">
+        <table class="specs stat-table">
           <thead>
             <tr>
               <th>#</th>
@@ -55,7 +55,10 @@
             {% for item in stats.top_products %}
               <tr>
                 <td>{{ forloop.counter }}</td>
-                <td>{{ item.product_name }}</td>
+                <td>
+                  <div>{{ item.product_name }}</div>
+                  <div class="stat-bar"><span class="stat-bar-fill" data-bar-val="{{ item.total_amount }}"></span></div>
+                </td>
                 <td><strong>{{ item.total_quantity }}</strong></td>
                 <td>{{ item.total_amount|floatformat:"0g" }} ₫</td>
               </tr>
@@ -70,7 +73,7 @@
     <section class="card dashboard-panel">
       <h2>Đơn hàng &amp; doanh thu theo ngày</h2>
       {% if stats.daily_orders %}
-        <table class="specs">
+        <table class="specs stat-table">
           <thead>
             <tr>
               <th>Ngày (VN)</th>
@@ -85,7 +88,10 @@
                 <td>{{ day.date|date:"d/m/Y" }}</td>
                 <td>{{ day.order_count }}</td>
                 <td>{{ day.completed_count }}</td>
-                <td><strong>{{ day.revenue|floatformat:"0g" }} ₫</strong></td>
+                <td>
+                  <div><strong>{{ day.revenue|floatformat:"0g" }} ₫</strong></div>
+                  <div class="stat-bar"><span class="stat-bar-fill" data-bar-val="{{ day.revenue }}"></span></div>
+                </td>
               </tr>
             {% endfor %}
           </tbody>

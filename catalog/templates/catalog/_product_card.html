@@ -1,13 +1,20 @@
 {% load static %}
 <div class="card">
   <a class="card-link" href="{% url 'product_detail' product.slug %}">
-    {% with image=product.images.first %}
-      <img loading="lazy" decoding="async"
-           src="{% if image %}{{ image.image.url }}{% else %}{% static 'img/no-image.svg' %}{% endif %}"
-           alt="{{ product.name }}"
-           data-fallback="{% static 'img/no-image.svg' %}"
-           onerror="this.onerror=null;this.src=this.dataset.fallback;">
-    {% endwith %}
+    <div class="card-media">
+      <span class="card-chip">{{ product.brand.name }}</span>
+      {% if product.review_count > 0 %}
+        <span class="card-rating">★ {{ product.rating_avg }}</span>
+      {% endif %}
+      {% with image=product.images.first %}
+        <img loading="lazy" decoding="async"
+             src="{% if image %}{{ image.image.url }}{% else %}{% static 'img/no-image.svg' %}{% endif %}"
+             alt="{{ product.name }}"
+             data-fallback="{% static 'img/no-image.svg' %}"
+             onerror="this.onerror=null;this.src=this.dataset.fallback;">
+      {% endwith %}
+      <span class="card-cta" aria-hidden="true">Xem chi tiết →</span>
+    </div>
     <div class="info">
       <p class="name">{{ product.name }}</p>
       <p class="meta">{{ product.series.name }} · {{ product.brand.name }}</p>

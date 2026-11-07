@@ -2,8 +2,7 @@
 from functools import wraps
 
 from django.conf import settings
-from django.core.exceptions import PermissionDenied
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 
 
 def staff_required(view_func):
@@ -15,9 +14,9 @@ def staff_required(view_func):
         if not user or not user.is_authenticated:
             return redirect(settings.LOGIN_URL)
         if not user.is_active or getattr(user, "is_locked", False):
-            raise PermissionDenied("Tài khoản đã bị khóa.")
+            return render(request, "403.html", status=403)
         if not (user.is_staff or user.is_superuser):
-            raise PermissionDenied("Chỉ nhân viên hoặc quản trị viên mới có quyền truy cập.")
+            return render(request, "403.html", status=403)
         return view_func(request, *args, **kwargs)
 
     return _wrapped
@@ -32,9 +31,9 @@ def admin_required(view_func):
         if not user or not user.is_authenticated:
             return redirect(settings.LOGIN_URL)
         if not user.is_active or getattr(user, "is_locked", False):
-            raise PermissionDenied("Tài khoản đã bị khóa.")
+            return render(request, "403.html", status=403)
         if not user.is_superuser:
-            raise PermissionDenied("Chỉ quản trị viên mới có quyền truy cập.")
+            return render(request, "403.html", status=403)
         return view_func(request, *args, **kwargs)
 
     return _wrapped

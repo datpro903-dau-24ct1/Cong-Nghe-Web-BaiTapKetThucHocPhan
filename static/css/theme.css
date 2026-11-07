@@ -263,6 +263,885 @@ a.cart-name:hover { color: var(--pink); }
 .dashboard-panel h2 { margin-top: 0; font-size: 18px; }
 
 
+/* ---------- Hiệu ứng & Animation nâng cao ---------- */
+html { scroll-behavior: smooth; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dropdownPop {
+  from { opacity: 0; transform: translateY(-8px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes auroraShift {
+  0% { background-position: 0% 50%, 100% 50%, 0 0; }
+  50% { background-position: 30% 20%, 70% 80%, 0 0; }
+  100% { background-position: 0% 50%, 100% 50%, 0 0; }
+}
+
+@keyframes toastSlideIn {
+  from { opacity: 0; transform: translateY(-10px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes badgePulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.55); }
+  50% { transform: scale(1.08); box-shadow: 0 0 0 6px rgba(236, 72, 153, 0); }
+}
+
+@keyframes imageFade {
+  from { opacity: 0.35; transform: scale(0.985); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Header kính mờ & gạch chân chuyển động */
+.site-header {
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: background .25s ease, box-shadow .25s ease;
+}
+.site-header.scrolled {
+  background: rgba(16, 12, 24, .96);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, .45);
+}
+.logo {
+  display: inline-block;
+  transition: transform .25s cubic-bezier(.22, 1, .36, 1), filter .25s ease;
+}
+.logo:hover {
+  transform: scale(1.04);
+  filter: drop-shadow(0 0 12px rgba(236, 72, 153, .45));
+}
+.nav a, .account a, .linklike {
+  position: relative;
+  transition: background-color .2s ease, color .2s ease, transform .2s ease;
+}
+.nav a::after, .account a:not(.cart-link)::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 4px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--grad);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform .25s cubic-bezier(.22, 1, .36, 1);
+}
+.nav a:hover::after, .account a:not(.cart-link):hover::after {
+  transform: scaleX(1);
+}
+.cart-link .badge {
+  animation: badgePulse 2.6s infinite ease-in-out;
+}
+
+/* Menu thả xuống & chip bộ lọc mượt mà */
+details.menu[open] ul,
+details.chip[open] .chip-panel {
+  animation: dropdownPop .22s cubic-bezier(.22, 1, .36, 1) both;
+  backdrop-filter: blur(16px);
+}
+.cats a, .chip summary, .pagination a {
+  transition: transform .2s cubic-bezier(.22, 1, .36, 1), border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+.cats a:hover, .chip summary:hover, .pagination a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(139, 92, 246, .22);
+}
+
+/* Nút bấm hiệu ứng ánh sáng & độ nảy */
+.btn {
+  position: relative;
+  overflow: hidden;
+  transition: transform .22s cubic-bezier(.22, 1, .36, 1), box-shadow .22s ease, filter .22s ease;
+  box-shadow: 0 4px 14px rgba(124, 58, 237, .28);
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(236, 72, 153, .38);
+  filter: brightness(1.1);
+}
+.btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* Ô nhập liệu glow khi focus */
+input[type="text"], input[type="email"], input[type="password"], input[type="tel"], input[type="number"], input:not([type]), textarea, select {
+  transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, .22);
+}
+
+/* Hero Banner chuyển động cực quang & Services */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background-size: 140% 140%, 140% 140%, 100% 100%;
+  animation: fadeUp .55s cubic-bezier(.22, 1, .36, 1) both, auroraShift 10s ease-in-out infinite;
+  box-shadow: 0 18px 42px rgba(13, 11, 20, .65), inset 0 1px 0 rgba(255, 255, 255, .07);
+}
+.services li {
+  animation: fadeUp .55s cubic-bezier(.22, 1, .36, 1) both;
+  transition: transform .25s cubic-bezier(.22, 1, .36, 1), border-color .25s ease, box-shadow .25s ease;
+}
+.services li:nth-child(1) { animation-delay: .05s; }
+.services li:nth-child(2) { animation-delay: .12s; }
+.services li:nth-child(3) { animation-delay: .19s; }
+.services li:nth-child(4) { animation-delay: .26s; }
+.services li:hover {
+  transform: translateY(-4px);
+  border-color: var(--purple);
+  box-shadow: 0 10px 24px rgba(139, 92, 246, .2);
+}
+.services .dot {
+  transition: transform .35s cubic-bezier(.22, 1, .36, 1), box-shadow .35s ease;
+}
+.services li:hover .dot {
+  transform: scale(1.12) rotate(8deg);
+  box-shadow: 0 0 16px rgba(236, 72, 153, .55);
+}
+
+/* Card sản phẩm: Stagger Entrance + Phóng ảnh mượt + Ánh sáng lướt */
+.card {
+  position: relative;
+  animation: fadeUp .5s cubic-bezier(.22, 1, .36, 1) both;
+  transition: transform .32s cubic-bezier(.22, 1, .36, 1), border-color .32s ease, box-shadow .32s ease;
+}
+.grid .card:nth-child(1)  { animation-delay: .02s; }
+.grid .card:nth-child(2)  { animation-delay: .06s; }
+.grid .card:nth-child(3)  { animation-delay: .10s; }
+.grid .card:nth-child(4)  { animation-delay: .14s; }
+.grid .card:nth-child(5)  { animation-delay: .18s; }
+.grid .card:nth-child(6)  { animation-delay: .22s; }
+.grid .card:nth-child(7)  { animation-delay: .26s; }
+.grid .card:nth-child(8)  { animation-delay: .30s; }
+.grid .card:nth-child(9)  { animation-delay: .34s; }
+.grid .card:nth-child(10) { animation-delay: .38s; }
+.grid .card:nth-child(11) { animation-delay: .42s; }
+.grid .card:nth-child(12) { animation-delay: .46s; }
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, .07) 50%, transparent 65%);
+  transform: translateX(-120%);
+  transition: transform .65s ease;
+  pointer-events: none;
+}
+.card:hover {
+  transform: translateY(-7px);
+  border-color: var(--pink);
+  box-shadow: 0 16px 34px rgba(236, 72, 153, .24), 0 0 0 1px rgba(236, 72, 153, .25);
+}
+.card:hover::after {
+  transform: translateX(120%);
+}
+.card img {
+  transition: transform .48s cubic-bezier(.22, 1, .36, 1), filter .35s ease;
+}
+.card:hover img {
+  transform: scale(1.065);
+  filter: saturate(1.08);
+}
+.card .name {
+  transition: color .2s ease;
+}
+.card:hover .name {
+  color: #fff;
+}
+
+/* Chi tiết sản phẩm & Thông báo (Toast) */
+.detail, main.narrow {
+  animation: fadeUp .45s cubic-bezier(.22, 1, .36, 1) both;
+}
+.gallery .main {
+  transition: transform .4s cubic-bezier(.22, 1, .36, 1), box-shadow .35s ease;
+}
+.gallery .main:hover {
+  transform: scale(1.015);
+  box-shadow: 0 14px 36px rgba(139, 92, 246, .25);
+}
+.gallery .main.switching {
+  animation: imageFade .28s ease-out;
+}
+.thumbs button {
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.thumbs button:hover, .thumbs button.active {
+  transform: translateY(-2px);
+  border-color: var(--pink);
+  box-shadow: 0 4px 12px rgba(236, 72, 153, .35);
+}
+.messages li {
+  animation: toastSlideIn .32s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+/* ---------- Hiệu ứng 3D Tilt, Spotlight, Particles, Ripple & Lightbox ---------- */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  z-index: 100;
+  background: linear-gradient(90deg, #8b5cf6, #ec4899, #f472b6);
+  box-shadow: 0 0 12px rgba(236, 72, 153, .8);
+  pointer-events: none;
+  transition: width .08s linear;
+}
+
+.anime-particles-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.85;
+}
+.site-header, main, .site-footer, .messages {
+  position: relative;
+  z-index: 1;
+}
+
+/* Spotlight theo chuột trên Card & Hero */
+.interactive-tilt {
+  position: relative;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+.interactive-tilt::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    360px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(236, 72, 153, .16),
+    rgba(139, 92, 246, .08) 45%,
+    transparent 75%
+  );
+  opacity: 0;
+  transition: opacity .3s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+.interactive-tilt:hover::before {
+  opacity: 1;
+}
+
+.hero {
+  background:
+    radial-gradient(circle at var(--hero-x, 18%) var(--hero-y, 24%), rgba(236, 72, 153, .42), transparent 52%),
+    radial-gradient(circle at 85% 80%, rgba(139, 92, 246, .42), transparent 55%),
+    var(--surface);
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .hero h1 {
+    background: linear-gradient(120deg, #ffffff 15%, #e9d5ff 45%, #f472b6 75%, #ffffff 95%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: textShimmer 5.5s linear infinite;
+  }
+}
+@keyframes textShimmer {
+  to { background-position: 200% center; }
+}
+
+/* Scroll Reveal Stagger */
+.reveal-init {
+  opacity: 0;
+  transform: translateY(28px) scale(0.96);
+  transition:
+    opacity .55s cubic-bezier(.22, 1, .36, 1),
+    transform .55s cubic-bezier(.22, 1, .36, 1),
+    border-color .3s ease,
+    box-shadow .3s ease;
+}
+.reveal-init.reveal-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Sóng xung kích khi bấm nút (Neon Ripple) */
+.btn-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, .65) 0%, rgba(236, 72, 153, .3) 60%, transparent 75%);
+  transform: scale(0);
+  animation: rippleWave .58s cubic-bezier(.22, 1, .36, 1) forwards;
+  pointer-events: none;
+}
+@keyframes rippleWave {
+  to { transform: scale(2.2); opacity: 0; }
+}
+
+/* Lightbox phóng ảnh toàn màn hình */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(10, 8, 16, .88);
+  backdrop-filter: blur(14px);
+  animation: fadeUp .22s ease-out both;
+  cursor: zoom-out;
+}
+.lightbox-overlay.closing {
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+.lightbox-img {
+  max-width: min(92vw, 860px);
+  max-height: 88vh;
+  border-radius: 16px;
+  border: 1px solid rgba(236, 72, 153, .45);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, .75), 0 0 36px rgba(139, 92, 246, .3);
+  object-fit: contain;
+  background: var(--surface);
+}
+.lightbox-close {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: #fff;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform .2s ease, background-color .2s ease;
+}
+.lightbox-close:hover {
+  background: var(--pink-deep);
+  transform: rotate(90deg) scale(1.08);
+}
+
+/* ---------- Nâng cấp Toàn diện: Hero Showcase, Card Overlay, Order Stepper, Dashboard Bars ---------- */
+
+/* 1. Hero 2 cột & Cụm Figure bay 3D */
+.hero-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: center;
+}
+.hero-pill {
+  display: inline-block;
+  padding: 5px 14px;
+  margin-bottom: 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: #f5d0fe;
+  background: rgba(139, 92, 246, .2);
+  border: 1px solid rgba(236, 72, 153, .45);
+  box-shadow: 0 0 18px rgba(236, 72, 153, .22);
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+  margin-top: 8px;
+}
+.hero-metrics {
+  display: flex;
+  gap: 20px;
+}
+.hero-metrics div {
+  display: flex;
+  flex-direction: column;
+  padding-left: 14px;
+  border-left: 2px solid rgba(236, 72, 153, .45);
+}
+.hero-metrics strong {
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+}
+.hero-metrics span {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+  50% { transform: translateY(-12px) rotate(var(--rot, 0deg)); }
+}
+.hero-showcase {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  min-height: 230px;
+}
+.hero-float-card {
+  position: relative;
+  width: 138px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(236, 72, 153, .45);
+  background: var(--surface-2);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, .55), 0 0 22px rgba(139, 92, 246, .25);
+  text-decoration: none;
+  animation: heroFloat 4.8s ease-in-out infinite;
+  transition: transform .3s ease, border-color .3s ease;
+}
+.hero-float-card.float-1 { --rot: -5deg; animation-delay: 0s; }
+.hero-float-card.float-2 { --rot: 0deg; width: 156px; z-index: 2; animation-delay: -1.6s; border-color: var(--pink); }
+.hero-float-card.float-3 { --rot: 5deg; animation-delay: -3.1s; }
+.hero-float-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+.hero-float-card span {
+  display: block;
+  padding: 6px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--text);
+  background: rgba(22, 18, 31, .92);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 2. Lớp phủ thao tác nhanh & Huy hiệu trên Card Sản phẩm */
+.card-media {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+.card-chip {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 3;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(13, 11, 20, .76);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(139, 92, 246, .45);
+}
+.card-rating {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 3;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #fde047;
+  background: rgba(13, 11, 20, .82);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(251, 191, 36, .4);
+}
+.card-cta {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  z-index: 3;
+  padding: 8px 14px;
+  border-radius: 999px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, rgba(124, 58, 237, .92), rgba(219, 39, 119, .92));
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .45);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .28s ease, transform .28s cubic-bezier(.22, 1, .36, 1);
+  pointer-events: none;
+}
+.card:hover .card-cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 3. Thanh tiến trình đơn hàng (Animated Order Stepper) */
+.order-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 24px;
+  margin-bottom: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, .35);
+}
+.order-stepper .step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  z-index: 2;
+}
+.order-stepper .step-dot {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--muted);
+  background: var(--surface-2);
+  border: 2px solid var(--border);
+  transition: all .35s ease;
+}
+.order-stepper .step.done .step-dot {
+  background: var(--purple-deep);
+  border-color: var(--purple);
+  color: #fff;
+}
+.order-stepper .step.current .step-dot {
+  background: var(--grad);
+  border-color: #f472b6;
+  color: #fff;
+  animation: badgePulse 2s infinite ease-in-out;
+}
+.order-stepper .step.cancelled-step .step-dot {
+  background: rgba(236, 72, 153, .25);
+  border-color: var(--pink);
+  color: #ff8fb8;
+}
+.order-stepper .step-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  text-align: center;
+}
+.order-stepper .step.current .step-label,
+.order-stepper .step.done .step-label {
+  color: var(--text);
+}
+.order-stepper .step-line {
+  flex: 1;
+  height: 3px;
+  margin: 0 10px 22px;
+  border-radius: 3px;
+  background: var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.order-stepper .step-line.active {
+  background: var(--grad);
+  box-shadow: 0 0 10px rgba(236, 72, 153, .5);
+}
+
+/* 4. Thanh biểu đồ tỉ lệ Dashboard (Animated Stat Bars) */
+.stat-bar {
+  width: 100%;
+  height: 6px;
+  margin-top: 6px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.stat-bar-fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: var(--grad);
+  box-shadow: 0 0 10px rgba(236, 72, 153, .55);
+  transition: width 1s cubic-bezier(.22, 1, .36, 1);
+}
+
+/* 5. Nâng cấp Giỏ hàng, Checkout Sticky, Tài khoản & Sổ địa chỉ */
+.checkout-summary {
+  position: sticky;
+  top: 84px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, .4);
+}
+main.narrow {
+  box-shadow: 0 18px 42px rgba(0, 0, 0, .48), 0 0 0 1px rgba(139, 92, 246, .16);
+  backdrop-filter: blur(12px);
+}
+.cart-line, .addr {
+  transition: transform .25s cubic-bezier(.22, 1, .36, 1), border-color .25s ease, box-shadow .25s ease;
+}
+.cart-line:hover, .addr:hover {
+  transform: translateY(-3px);
+  border-color: var(--purple);
+  box-shadow: 0 10px 24px rgba(139, 92, 246, .18);
+}
+
+/* 6. Nút nổi Lên đầu trang (Floating Back-to-Top) */
+.back-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 90;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(236, 72, 153, .5);
+  background: var(--grad);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 10px 26px rgba(236, 72, 153, .45);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px) scale(0.85);
+  transition: opacity .25s ease, transform .25s cubic-bezier(.22, 1, .36, 1), visibility .25s;
+}
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+.back-to-top:hover {
+  transform: translateY(-4px) scale(1.06);
+  filter: brightness(1.12);
+}
+
+@media (max-width: 860px) {
+  .hero-split { grid-template-columns: 1fr; }
+  .hero-showcase { display: none; }
+}
+
+/* ---------- 5 Hiệu ứng Micro-interactions nâng cao ---------- */
+
+/* 1. Ảnh bay vào Giỏ hàng (Fly-to-Cart Parabol) */
+.fly-to-cart-clone {
+  position: fixed;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--pink);
+  box-shadow: 0 0 24px rgba(236, 72, 153, .85), 0 0 40px rgba(139, 92, 246, .6);
+  z-index: 999;
+  pointer-events: none;
+  will-change: left, top, transform, opacity;
+}
+@keyframes cartBounceAnim {
+  0%, 100% { transform: scale(1); }
+  35% { transform: scale(1.28) rotate(-6deg); color: #f472b6; }
+  70% { transform: scale(0.92) rotate(4deg); }
+}
+.cart-link.cart-bounce {
+  display: inline-block;
+  animation: cartBounceAnim .42s cubic-bezier(.22, 1, .36, 1);
+}
+
+/* 2. Dải băng chữ chạy vô tận (Infinite Anime & Brand Marquee) */
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.brand-marquee {
+  overflow: hidden;
+  margin: -8px 0 22px;
+  padding: 10px 0;
+  background: rgba(22, 18, 31, .75);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  backdrop-filter: blur(10px);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 32px;
+  animation: marqueeScroll 28s linear infinite;
+}
+.brand-marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+.marquee-track span {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+  color: var(--muted);
+  white-space: nowrap;
+  transition: color .2s ease, text-shadow .2s ease;
+}
+.marquee-track span:hover {
+  color: #f472b6;
+  text-shadow: 0 0 12px rgba(236, 72, 153, .6);
+}
+
+/* 3. Chọn 5 sao đánh giá tương tác (Interactive Star Picker) */
+.sr-only-select {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  border: 0 !important;
+}
+.star-picker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  width: fit-content;
+}
+.star-btn {
+  background: none;
+  border: 0;
+  padding: 2px 4px;
+  font-size: 26px;
+  line-height: 1;
+  color: #4b4263;
+  cursor: pointer;
+  transition: transform .18s cubic-bezier(.22, 1, .36, 1), color .18s ease, text-shadow .18s ease;
+}
+.star-btn.lit {
+  color: #fbbf24;
+  text-shadow: 0 0 14px rgba(251, 191, 36, .55);
+}
+.star-btn:hover {
+  transform: scale(1.24) rotate(-6deg);
+}
+.star-picker-caption {
+  margin-left: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fde68a;
+}
+
+/* 4. Cụm nút Tăng / Giảm số lượng [-] [+] (Quantity Stepper) */
+.qty-stepper {
+  display: inline-flex;
+  align-items: center;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.qty-stepper:focus-within {
+  border-color: var(--pink);
+  box-shadow: 0 0 0 3px rgba(236, 72, 153, .2);
+}
+.qty-btn {
+  width: 36px;
+  height: 38px;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background-color .18s ease, color .18s ease;
+}
+.qty-btn:hover:not(:disabled) {
+  background: rgba(236, 72, 153, .22);
+  color: #fff;
+}
+.qty-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.qty-stepper input[type="number"] {
+  width: 54px !important;
+  text-align: center;
+  border: 0 !important;
+  background: transparent !important;
+  padding: 6px 2px !important;
+  font-weight: 800;
+  box-shadow: none !important;
+  -moz-appearance: textfield;
+}
+.qty-stepper input[type="number"]::-webkit-outer-spin-button,
+.qty-stepper input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+@keyframes qtyPopAnim {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.28); color: var(--pink); }
+  100% { transform: scale(1); }
+}
+.qty-pop {
+  animation: qtyPopAnim .24s ease-out;
+}
+
+/* 5. Thông báo Toast đếm ngược 5s & Nút đóng [×] */
+.messages li {
+  position: relative;
+  overflow: hidden;
+  padding-right: 42px;
+  transition: opacity .28s ease, transform .28s ease;
+}
+.messages li.toast-leaving {
+  opacity: 0;
+  transform: translateY(-12px) scale(0.97);
+}
+.toast-close {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 0;
+  background: rgba(255, 255, 255, .1);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color .18s ease, transform .18s ease;
+}
+.toast-close:hover {
+  background: rgba(236, 72, 153, .45);
+  transform: translateY(-50%) scale(1.1);
+}
+@keyframes toastCountdown {
+  from { width: 100%; }
+  to { width: 0%; }
+}
+.toast-timer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 100%;
+  background: var(--grad);
+  animation: toastCountdown 5s linear forwards;
+}
+
 /* Giao diện responsive, trang lỗi 404/500 & thông báo (CN26) */
 .messages li.success { background: rgba(34, 197, 94, .14); border-color: rgba(34, 197, 94, .5); color: #bbf7d0; }
 .messages li.warning { background: rgba(245, 158, 11, .14); border-color: rgba(245, 158, 11, .5); color: #fde68a; }
@@ -270,6 +1149,15 @@ a.cart-name:hover { color: var(--pink); }
 .error-page { text-align: center; padding: 40px 24px; }
 .error-code { font-size: 64px; font-weight: 900; line-height: 1; margin: 0 0 12px; color: var(--pink); }
 .noscript-thumbs { display: flex; flex-wrap: wrap; gap: 10px; margin: 4px 0 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 
 @media (max-width: 768px) {
   main.narrow { margin: 16px 12px; padding: 20px 16px; }
