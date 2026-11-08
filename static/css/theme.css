@@ -510,6 +510,13 @@ input:focus, textarea:focus, select:focus {
   position: relative;
   z-index: 1;
 }
+.site-header {
+  position: sticky;
+  z-index: 50;
+}
+.messages {
+  z-index: 40;
+}
 
 /* Spotlight theo chuột trên Card & Hero */
 .interactive-tilt {
